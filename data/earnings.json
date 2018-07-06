@@ -1,0 +1,1583 @@
+{
+    "date_from": "2018-07-02",
+    "date_to": "2018-07-13",
+    "earnings": {
+        "2018-07-13": {
+            "stocks": [
+                {
+                    "importance": 5,
+                    "symbol": "JPM",
+                    "date": "2018-07-13",
+                    "time": "07:00:00",
+                    "title": "JPMorgan Chase",
+                    "emoji": "💰"
+                },
+                {
+                    "importance": 5,
+                    "symbol": "WFC",
+                    "date": "2018-07-13",
+                    "time": "08:00:00",
+                    "title": "Wells Fargo"
+                },
+                {
+                    "importance": 5,
+                    "symbol": "C",
+                    "date": "2018-07-13",
+                    "time": "08:00:00",
+                    "title": "Citigroup"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "OPTT",
+                    "date": "2018-07-13",
+                    "time": "09:00:00",
+                    "title": "Ocean Power Technologies, Inc. - Common Stock"
+                },
+                {
+                    "importance": 3,
+                    "symbol": "CDMO",
+                    "date": "2018-07-13",
+                    "time": "16:00:00",
+                    "title": "Avid Bioservices"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "LKM",
+                    "date": "2018-07-13",
+                    "time": "16:00:00",
+                    "title": "Link Motion"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SMIT",
+                    "date": "2018-07-13",
+                    "time": "16:00:00",
+                    "title": "Schmitt Industries"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "PNC",
+                    "date": "2018-07-13",
+                    "time": "06:00:00",
+                    "title": "PNC Financial Services"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "UUU",
+                    "date": "2018-07-13",
+                    "time": "16:00:00",
+                    "title": "Universal Security"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HJLI",
+                    "date": "2018-07-13",
+                    "time": "02:20:02",
+                    "title": "Hancock Jaffe"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "FRC",
+                    "date": "2018-07-13",
+                    "time": "08:00:00",
+                    "title": "First Republic Bank"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "FHN",
+                    "date": "2018-07-13",
+                    "time": "07:00:00",
+                    "title": "First Horizon National"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MGTX",
+                    "date": "2018-07-13",
+                    "time": "02:18:11",
+                    "title": "MeiraGTx Holdings"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ATLO",
+                    "date": "2018-07-13",
+                    "time": "08:00:00",
+                    "title": "Ames National Corporation - Common Stock"
+                }
+            ],
+            "day": "Friday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "13",
+            "selected_copy": "JPM, WFC, C and 11 more stocks reporting Friday",
+            "deselected_copy": "JPM, WFC, C and 11 more stocks reporting Friday"
+        },
+        "2018-07-11": {
+            "stocks": [
+                {
+                    "importance": 0,
+                    "symbol": "AKER",
+                    "date": "2018-07-11",
+                    "time": "07:00:00",
+                    "title": "Akers Biosciences"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "IMNP",
+                    "date": "2018-07-11",
+                    "time": "07:00:00",
+                    "title": "Immune Pharmaceuticals Inc. - Common Stock"
+                },
+                {
+                    "importance": 3,
+                    "symbol": "LEDS",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "SemiLEDs"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "AXON",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "Axovant Sciences Ltd. Common Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ONCS",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "OncoSec Medical Incorporated - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CREG",
+                    "date": "2018-07-11",
+                    "time": "09:00:00",
+                    "title": "China Recycling Energy"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "TNTR",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "Tintri"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "QTM",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "Quantum"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ORPN",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "Bio Blast Pharma"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "JASO",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "JA Solar Holdings, Co., Ltd. - American depositary shares, each representing five ordinary shares"
+                },
+                {
+                    "importance": 5,
+                    "symbol": "AABA",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "Altaba"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "XBIT",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "XBiotech"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "SFUN",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "SouFun Holdings"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "FINL",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "Finish Line"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SSTI",
+                    "date": "2018-07-11",
+                    "time": "06:00:00",
+                    "title": "ShotSpotter"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "OSN",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "Ossen Innovation Co"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CAFD",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "8point3 Energy Partners LP - Class A Shares"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "FAST",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "Fastenal"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ORMP",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "Oramed Pharmaceuticals Inc. - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CBAK",
+                    "date": "2018-07-11",
+                    "time": "17:00:00",
+                    "title": "CBAK Energy Technology"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MCB",
+                    "date": "2018-07-11",
+                    "time": "02:43:41",
+                    "title": "Metropolitan Bank Holding"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CCF",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "Chase"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "WPG",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "Washington Prime Group"
+                },
+                {
+                    "importance": 3,
+                    "symbol": "OZRK",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "Bank of the Ozarks"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "IQV",
+                    "date": "2018-07-11",
+                    "time": "08:47:13",
+                    "title": "IQVIA Holdings"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "ANGO",
+                    "date": "2018-07-11",
+                    "time": "07:00:00",
+                    "title": "AngioDynamics"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GSM",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "Ferroglobe PLC - Ordinary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HCM",
+                    "date": "2018-07-11",
+                    "time": ":00:00",
+                    "title": "Welltower Inc. Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "WAGE",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "WageWorks"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CHU",
+                    "date": "2018-07-11",
+                    "time": "06:00:00",
+                    "title": "China Unicom (Hong Kong) Ltd Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HIHO",
+                    "date": "2018-07-11",
+                    "time": "09:00:00",
+                    "title": "Highway Holdings"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "PKX",
+                    "date": "2018-07-11",
+                    "time": "06:48:55",
+                    "title": "POSCO"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "MSM",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "MSC Industrial Direct"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GNUS",
+                    "date": "2018-07-11",
+                    "time": "05:43:30",
+                    "title": "Genius Brands Intl"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ASFI",
+                    "date": "2018-07-11",
+                    "time": "09:00:00",
+                    "title": "Asta Funding, Inc. - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "TAX",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "Liberty Tax"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "NPK",
+                    "date": "2018-07-11",
+                    "time": "06:00:00",
+                    "title": "National Presto Indus"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "PCYO",
+                    "date": "2018-07-11",
+                    "time": "16:00:00",
+                    "title": "Pure Cycle Corporation - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "RMCF",
+                    "date": "2018-07-11",
+                    "time": "08:00:00",
+                    "title": "Rocky Mountain Chocolate"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "LEXEA",
+                    "date": "2018-07-11",
+                    "time": "08:17:44",
+                    "title": "Liberty Expedia Holdings"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MAYS",
+                    "date": "2018-07-11",
+                    "time": "09:00:00",
+                    "title": "J. W. Mays, Inc. - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CMSSU",
+                    "date": "2018-07-11",
+                    "time": "00:46:26",
+                    "title": "CM Seven Star Acquisition Corporation - Unit"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "QEPC",
+                    "date": "2018-07-11",
+                    "time": "09:00:00",
+                    "title": "Q EP"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "VSBN",
+                    "date": "2018-07-11",
+                    "time": "09:00:00",
+                    "title": "VSB BANCORP INC (NY) by VSB Bancorp, Inc."
+                }
+            ],
+            "day": "Wednesday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "11",
+            "selected_copy": "AKER, IMNP, LEDS and 41 more stocks reporting Wednesday",
+            "deselected_copy": "AKER, IMNP, LEDS and 41 more stocks reporting Wednesday"
+        },
+        "2018-07-06": {
+            "stocks": [],
+            "day": "Friday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "06",
+            "selected_copy": "Sorry, there are no stocks reporting earnings Friday",
+            "deselected_copy": "Sorry, there are no stocks reporting earnings Friday"
+        },
+        "2018-07-12": {
+            "stocks": [
+                {
+                    "importance": 0,
+                    "symbol": "SDRL",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Seadrill Limited"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "DARE",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Dare Bioscience"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GBSN",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Great Basin Scientific"
+                },
+                {
+                    "importance": 4,
+                    "symbol": "DAL",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Delta Air Lines"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SEED",
+                    "date": "2018-07-12",
+                    "time": "07:00:00",
+                    "title": "Origin Agritech Limited - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "BSPM",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Biostar Pharmaceuticals"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "PTI",
+                    "date": "2018-07-12",
+                    "time": "00:00:00",
+                    "title": "Proteostasis Therapeutics, Inc. - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "LKM",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Link Motion"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "IFON",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "InfoSonics"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CREG",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "China Recycling Energy Corporation - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ABIL",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Ability Inc. - Ordinary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CCIH",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "ChinaCache International Holdings Ltd"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "LBIX",
+                    "date": "2018-07-12",
+                    "time": "00:00:00",
+                    "title": "Leading Brands Inc - Common Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MDXG",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "MiMedx Group"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "QTM",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Quantum"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ROSG",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Rosetta Genomics Ltd. - ordinary shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CADC",
+                    "date": "2018-07-12",
+                    "time": "06:00:00",
+                    "title": "China Adv Construction"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SKYS",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Sky Solar Holdings"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "YGE",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Yingli Green Energy Hldg"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "JRJR",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "JRjr33, Inc. Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "FIZZ",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "National Beverage"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SSKN",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Strata Skin Sciences, Inc. - Common Stock"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "ANW",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Aegean Marine Petroleum"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MBVX",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "MabVax Therapeutics Hldgs"
+                },
+                {
+                    "importance": 5,
+                    "symbol": "AABA",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Altaba"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "INFY",
+                    "date": "2018-07-12",
+                    "time": "23:00:00",
+                    "title": "Infosys"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CARV",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Carver Bancorp"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GSUM",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Gridsum Holding Inc. - American Depositary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CODX",
+                    "date": "2018-07-12",
+                    "time": "06:22:24",
+                    "title": "Co-Diagnostics"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "KALV",
+                    "date": "2018-07-12",
+                    "time": "07:54:04",
+                    "title": "KalVista Pharmaceuticals"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HGSH",
+                    "date": "2018-07-12",
+                    "time": "07:00:00",
+                    "title": "China HGS Real Estate"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MTSL",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "MER Telemanagement"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CIG",
+                    "date": "2018-07-12",
+                    "time": "00:00:00",
+                    "title": "Comp En De Mn Cemig ADS American Depositary Shares"
+                },
+                {
+                    "importance": 3,
+                    "symbol": "OSN",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Ossen Innovation"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CPAH",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "CounterPath"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "FWP",
+                    "date": "2018-07-12",
+                    "time": "09:29:41",
+                    "title": "Forward Pharma A/S - American Depositary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ORMP",
+                    "date": "2018-07-12",
+                    "time": "00:00:00",
+                    "title": "Oramed Pharmaceuticals Inc. - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "RBCN",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Rubicon Technology"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "BORN",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "China New Borun"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ROYT",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Pacific Coast Oil Trust Units of Beneficial Interest"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "LENS",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Presbia"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "BPT",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "BP Prudhoe Bay"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "CAVM",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Cavium"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ATEN",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "A10 Networks"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "PETZ",
+                    "date": "2018-07-12",
+                    "time": "01:05:26",
+                    "title": "TDH Holdings, Inc. - Common Shares"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "SMCI",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Super Micro Computer"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "OASM",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Oasmia Pharmaceutical AB - American Depositary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ROYL",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Royale Energy"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "AEG",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "AEGON N.V. Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "EMMS",
+                    "date": "2018-07-12",
+                    "time": "06:00:00",
+                    "title": "Emmis Communications"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SVA",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Sinovac Biotech"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GSB",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "GlobalSCAPE"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SNP",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "China Petroleum & Chemical Corporation Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "NEWA",
+                    "date": "2018-07-12",
+                    "time": "03:24:39",
+                    "title": "Newater Technology, Inc. - Ordinary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ARTW",
+                    "date": "2018-07-12",
+                    "time": "10:00:00",
+                    "title": "Art's-Way Manufacturing"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MSN",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Emerson Radio"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "WAGE",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "WageWorks"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CHU",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "China Unicom"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "NXTM",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "NxStage Medical"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CCUR",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Concurrent Computer"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SKIS",
+                    "date": "2018-07-12",
+                    "time": "07:00:00",
+                    "title": "Peak Resorts"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "PGLC",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Pershing Gold Corporation - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "EHIC",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "eHi Car Services"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ZLAB",
+                    "date": "2018-07-12",
+                    "time": "01:00:29",
+                    "title": "Zai Lab Limited - American Depositary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CEA",
+                    "date": "2018-07-12",
+                    "time": "06:32:50",
+                    "title": "China Eastern Airlines"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CCM",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Concord Medical Services Holdings Limited"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HIL",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Hill International"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ASFI",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Asta Funding, Inc. - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "BRACU",
+                    "date": "2018-07-12",
+                    "time": "05:48:52",
+                    "title": "Black Ridge Acquisition"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CHA",
+                    "date": "2018-07-12",
+                    "time": "06:40:57",
+                    "title": "China Telecom Corp"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "TLK",
+                    "date": "2018-07-12",
+                    "time": "11:00:00",
+                    "title": "Telekomunikasi Indonesia"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "EDGW",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Edgewater Technology"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MOXC",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "MOXIAN INC by Moxian, Inc."
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CIA",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Citizens"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CBSH",
+                    "date": "2018-07-12",
+                    "time": "09:00:00",
+                    "title": "Commerce Bancshares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ASPU",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "ASPEN GROUP INC by Aspen Group Inc."
+                },
+                {
+                    "importance": 0,
+                    "symbol": "PTSX",
+                    "date": "2018-07-12",
+                    "time": "13:00:00",
+                    "title": "POINT.360 by Point.360"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SCX",
+                    "date": "2018-07-12",
+                    "time": "04:17:08",
+                    "title": "The L S Starrett"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ENIA",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Enersis Americas S.A. American Depositary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "NTIC",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Northern Technologies Int"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "OLBK",
+                    "date": "2018-07-12",
+                    "time": "04:00:00",
+                    "title": "Old Line Bancshares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GPIC",
+                    "date": "2018-07-12",
+                    "time": "09:00:00",
+                    "title": "Gaming Partners Intl"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "TORM",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "TOR Minerals"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "RVEN",
+                    "date": "2018-07-12",
+                    "time": "06:00:00",
+                    "title": "Reven Housing REIT"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HIFS",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Hingham Institution"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CMSSU",
+                    "date": "2018-07-12",
+                    "time": "00:46:25",
+                    "title": "CM Seven Star Acquisition Corporation - Unit"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MPACU",
+                    "date": "2018-07-12",
+                    "time": "08:15:46",
+                    "title": "Matlin & Partners"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "BKSC",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Bank of South Carolina"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "DNBF",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "DNB Financial"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GRIF",
+                    "date": "2018-07-12",
+                    "time": "08:00:00",
+                    "title": "Griffin Industrial Realty"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "NOBH",
+                    "date": "2018-07-12",
+                    "time": "16:00:00",
+                    "title": "Nobility Homes"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "OFED",
+                    "date": "2018-07-12",
+                    "time": "06:00:00",
+                    "title": "Oconee Federal Financial"
+                }
+            ],
+            "day": "Thursday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "12",
+            "selected_copy": "SDRL, DARE, GBSN and 89 more stocks reporting Thursday",
+            "deselected_copy": "SDRL, DARE, GBSN and 89 more stocks reporting Thursday"
+        },
+        "2018-07-09": {
+            "stocks": [
+                {
+                    "importance": 0,
+                    "symbol": "BIOA",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "BioAmber"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "BSPM",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Biostar Pharmaceuticals"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "RAS",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Rait Financial"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "AKTX",
+                    "date": "2018-07-09",
+                    "time": "07:11:52",
+                    "title": "Akari Therapeutics"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CALI",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "China Auto Logistics"
+                },
+                {
+                    "importance": 3,
+                    "symbol": "MON",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Monsanto",
+                    "emoji": "🐜"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "LBCC",
+                    "date": "2018-07-09",
+                    "time": "00:00:00",
+                    "title": "Long Blockchain"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ACST",
+                    "date": "2018-07-09",
+                    "time": "00:36:28",
+                    "title": "Acasti Pharma, Inc. - Class A Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ROSG",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Rosetta Genomics Ltd. - ordinary shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CADC",
+                    "date": "2018-07-09",
+                    "time": "14:00:00",
+                    "title": "China Adv Construction"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "RHE",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Regional Health"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "HAIN",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "The Hain Celestial Group, Inc."
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MXC",
+                    "date": "2018-07-09",
+                    "time": "09:00:00",
+                    "title": "Mexco Energy"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GSUM",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Gridsum Holding Inc. - American Depositary Shares"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CGA",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "China Green Agriculture"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "BBOX",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Black Box"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "WLB",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Westmoreland Coal"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "TISA",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Top Image Systems"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ATLS",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Atlas Energy Group"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "VOXX",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "VOXX International"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ATEN",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "A10 Networks"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SIGM",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Sigma Designs"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "STON",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Stonemor Partners"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "AZRX",
+                    "date": "2018-07-09",
+                    "time": "00:00:00",
+                    "title": "AzurRx BioPharma"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GNRT",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Gener8 Maritime, Inc. Common Shares"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "MSCC",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Microsemi"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MATR",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Mattersight"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "GSB",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "GlobalSCAPE"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MSN",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Emerson Radio"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "NXTM",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "NxStage Medical"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CCUR",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Concurrent Computer"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "RMBL",
+                    "date": "2018-07-09",
+                    "time": "07:20:29",
+                    "title": "RumbleON"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HELE",
+                    "date": "2018-07-09",
+                    "time": "09:00:00",
+                    "title": "Helen of Troy"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SURF",
+                    "date": "2018-07-09",
+                    "time": "06:27:05",
+                    "title": "Surface Oncology, Inc. - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "TV",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Grupo Televisa"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HIL",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Hill International"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "SHLM",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "A Schulman"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "THTI",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "THT Heat Transfer Tech"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "TAX",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Liberty Tax"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "EDGW",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "Edgewater Technology"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ISRL",
+                    "date": "2018-07-09",
+                    "time": "16:00:00",
+                    "title": "Isramco, Inc. - Common Stock"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "UBOH",
+                    "date": "2018-07-09",
+                    "time": "08:00:00",
+                    "title": "United Bancshares, Inc. - Common Stock"
+                }
+            ],
+            "day": "Monday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "09",
+            "selected_copy": "BIOA, BSPM, RAS and 39 more stocks reporting Monday",
+            "deselected_copy": "BIOA, BSPM, RAS and 39 more stocks reporting Monday"
+        },
+        "2018-07-10": {
+            "stocks": [
+                {
+                    "importance": 5,
+                    "symbol": "PEP",
+                    "date": "2018-07-10",
+                    "time": "06:00:00",
+                    "title": "PepsiCo"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "IPCI",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "IntelliPharmaCeutics"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "SLP",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "Simulations Plus"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "MRUS",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "Merus N.V. - Common Shares"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "WDFC",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "WD-40"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "AIR",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "AAR"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "EXFO",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "EXFO"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "HCSG",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "Healthcare Services Group"
+                },
+                {
+                    "importance": 3,
+                    "symbol": "SAR",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "Saratoga Investment"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "CNBKA",
+                    "date": "2018-07-10",
+                    "time": "16:00:00",
+                    "title": "Century Bancorp"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "JXSB",
+                    "date": "2018-07-10",
+                    "time": "09:00:00",
+                    "title": "Jacksonville Bancorp"
+                }
+            ],
+            "day": "Tuesday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "10",
+            "selected_copy": "PEP, IPCI, SLP and 8 more stocks reporting Tuesday",
+            "deselected_copy": "PEP, IPCI, SLP and 8 more stocks reporting Tuesday"
+        },
+        "2018-07-05": {
+            "stocks": [
+                {
+                    "importance": 0,
+                    "symbol": "XPLR",
+                    "date": "2018-07-05",
+                    "time": "08:00:00",
+                    "title": "Xplore Technologies Corp - Common Stock"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "PSMT",
+                    "date": "2018-07-05",
+                    "time": "16:00:00",
+                    "title": "Pricesmart"
+                },
+                {
+                    "importance": 0,
+                    "symbol": "ISCA",
+                    "date": "2018-07-05",
+                    "time": "08:00:00",
+                    "title": "International Speedway"
+                }
+            ],
+            "day": "Today",
+            "month": "July",
+            "year": "2018",
+            "date_number": "05",
+            "selected_copy": "XPLR, PSMT, and ISCA reporting Today",
+            "deselected_copy": "XPLR, PSMT, and ISCA reporting Today"
+        },
+        "2018-07-04": {
+            "stocks": [],
+            "day": "Wednesday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "04",
+            "selected_copy": "Sorry, there are no stocks reporting earnings Wednesday",
+            "deselected_copy": "Sorry, there are no stocks reporting earnings Wednesday"
+        },
+        "2018-07-02": {
+            "stocks": [
+                {
+                    "importance": 0,
+                    "symbol": "SNCR",
+                    "date": "2018-07-02",
+                    "time": "08:00:00",
+                    "title": "Synchronoss Technologies"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "MLHR",
+                    "date": "2018-07-02",
+                    "time": "16:00:00",
+                    "title": "Herman Miller"
+                }
+            ],
+            "day": "Monday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "02",
+            "selected_copy": "SNCR and MLHR reporting Monday",
+            "deselected_copy": "SNCR and MLHR reporting Monday"
+        },
+        "2018-07-03": {
+            "stocks": [
+                {
+                    "importance": 0,
+                    "symbol": "SHIP",
+                    "date": "2018-07-03",
+                    "time": "08:00:00",
+                    "title": "Seanergy Maritime"
+                },
+                {
+                    "importance": 2,
+                    "symbol": "AYI",
+                    "date": "2018-07-03",
+                    "time": "08:00:00",
+                    "title": "Acuity Brands"
+                },
+                {
+                    "importance": 1,
+                    "symbol": "AZZ",
+                    "date": "2018-07-03",
+                    "time": "08:00:00",
+                    "title": "AZZ"
+                }
+            ],
+            "day": "Tuesday",
+            "month": "July",
+            "year": "2018",
+            "date_number": "03",
+            "selected_copy": "SHIP, AYI, and AZZ reporting Tuesday",
+            "deselected_copy": "SHIP, AYI, and AZZ reporting Tuesday"
+        }
+    }
+}

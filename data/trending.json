@@ -1,0 +1,251 @@
+{
+    "response": {
+        "status": 200
+    },
+    "symbols": [
+        {
+            "id": 11709,
+            "symbol": "SRNE",
+            "title": "Sorrento Therapeutics Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 7521
+        },
+        {
+            "id": 14457,
+            "symbol": "DFBG",
+            "title": "Differential Brands Group Inc",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 2088
+        },
+        {
+            "id": 3719,
+            "symbol": "SWIR",
+            "title": "Sierra Wireless Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 4023
+        },
+        {
+            "id": 14042,
+            "symbol": "FNKO",
+            "title": "Funko, Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 1872
+        },
+        {
+            "id": 8660,
+            "symbol": "TSLA",
+            "title": "Tesla, Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 160583
+        },
+        {
+            "id": 9358,
+            "symbol": "GM",
+            "title": "General Motors Company",
+            "aliases": [
+                "RGM"
+            ],
+            "is_following": false,
+            "watchlist_count": 15322
+        },
+        {
+            "id": 2716,
+            "symbol": "MLCO",
+            "title": "Melco Crown Entertainment Ltd.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 1615
+        },
+        {
+            "id": 12746,
+            "symbol": "RUN",
+            "title": "Sunrun",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 4646
+        },
+        {
+            "id": 11860,
+            "symbol": "COUP",
+            "title": "Coupa Software",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 2275
+        },
+        {
+            "id": 14423,
+            "symbol": "INNT",
+            "title": "Innovate Biopharmaceuticals, Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 3122
+        },
+        {
+            "id": 9566,
+            "symbol": "ECYT",
+            "title": "Endocyte, Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 6224
+        },
+        {
+            "id": 4827,
+            "symbol": "CRL",
+            "title": "Charles River Laboratories International, Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 273
+        },
+        {
+            "id": 5058,
+            "symbol": "DSW",
+            "title": "DSW Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 1267
+        },
+        {
+            "id": 3930,
+            "symbol": "UBSH",
+            "title": "Union First Market Bankshares Corporation",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 27
+        },
+        {
+            "id": 11741,
+            "symbol": "XPLR",
+            "title": "Xplore Technologies Corp.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 840
+        },
+        {
+            "id": 855,
+            "symbol": "AMSC",
+            "title": "American Superconductor Corporation",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 1161
+        },
+        {
+            "id": 2385,
+            "symbol": "JBLU",
+            "title": "JetBlue Airways Corporation",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 8939
+        },
+        {
+            "id": 2073,
+            "symbol": "GTLS",
+            "title": "Chart Industries Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 265
+        },
+        {
+            "id": 12753,
+            "symbol": "ZYNE",
+            "title": "Zynerba Pharmaceuticals",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 8028
+        },
+        {
+            "id": 6609,
+            "symbol": "NYCB",
+            "title": "New York Community Bancorp Inc.",
+            "aliases": [
+                "NYB"
+            ],
+            "is_following": false,
+            "watchlist_count": 687
+        },
+        {
+            "id": 3921,
+            "symbol": "TZOO",
+            "title": "Travelzoo Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 1017
+        },
+        {
+            "id": 3532,
+            "symbol": "SIGA",
+            "title": "SIGA Technologies, Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 339
+        },
+        {
+            "id": 6011,
+            "symbol": "JNJ",
+            "title": "Johnson & Johnson",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 15350
+        },
+        {
+            "id": 3356,
+            "symbol": "REGN",
+            "title": "Regeneron Pharmaceuticals, Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 7035
+        },
+        {
+            "id": 7271,
+            "symbol": "SPY",
+            "title": "SPDR S&P 500",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 91281
+        },
+        {
+            "id": 5503,
+            "symbol": "GG",
+            "title": "Goldcorp Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 4227
+        },
+        {
+            "id": 12267,
+            "symbol": "AAOI",
+            "title": "Applied Optoelectronics",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 14289
+        },
+        {
+            "id": 7569,
+            "symbol": "UNH",
+            "title": "Unitedhealth Group, Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 5265
+        },
+        {
+            "id": 585,
+            "symbol": "UMH",
+            "title": "UMH Properties Inc.",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 85
+        },
+        {
+            "id": 7589,
+            "symbol": "USO",
+            "title": "United States Oil ETF",
+            "aliases": [],
+            "is_following": false,
+            "watchlist_count": 28503
+        }
+    ]
+}

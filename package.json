@@ -1,0 +1,30 @@
+{
+  "name": "financial_scripts",
+  "version": "1.0.0",
+  "description": "Google Scripts to track financial assets and portfolios in Google Spreadsheets",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardo-hdz/financial_scripts.git"
+  },
+  "keywords": [
+    "google",
+    "scripts",
+    "financial",
+    "stocks"
+  ],
+  "author": "Ricardo Hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricardo-hdz/financial_scripts/issues"
+  },
+  "homepage": "https://github.com/ricardo-hdz/financial_scripts#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "request-promise": "^4.2.2"
+  }
+}
