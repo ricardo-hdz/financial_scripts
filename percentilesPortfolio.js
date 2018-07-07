@@ -7,21 +7,6 @@ function onOpen() {
 
 var portfolioTicks = [];
 
-function getTrendingTicks(start, end) {
-    var response = UrlFetchApp.fetch(TRENDING_ENDPOINT);
-    return JSON.parse(response.getContentText());
-}
-
-function processTrendingTicks(data) {
-    var ticks = [];
-    if (data && data.response.status == 200) {
-        data.symbols.forEach(function(trend) {
-            ticks.push(trend.symbol);
-        });
-    }
-    return ticks;
-}
-
 function getLatestExchangeRate(currency) {
     var url = ENDPOINT_RATES.replace('{currency}', currency);
     var response = UrlFetchApp.fetch(url);
@@ -93,18 +78,24 @@ function getPortfolioTicks() {
 }
 
 function sendBriefing() {
-    var message =  getPortfolioPercentiles();
+    var d = new Date();
+
+    // Send briefing only on market days
+    if (d.getDay() === 6 || d.getDay() === 0) {
+        return;
+    }
+
+    var message = getEarningsCalendarMessage(2);
+    message = message + getPortfolioPercentiles();
 
     var trendingData = getTrendingTicks();
     var ticks = processTrendingTicks(trendingData);
     message = message + renderTrendingTicks(ticks);
 
-
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var url = spreadsheet.getUrl();
     var owner = spreadsheet.getOwner();
 
-    var d = new Date();
     var type;
     type = d.getHours() < 12 ? 'Opening' : 'Closing';
 

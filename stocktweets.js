@@ -9,17 +9,17 @@ function getEarningsCalendar(start, end) {
     return JSON.parse(response.getContentText());
 }
 
-function getDates(date) {
+function getDates(startDate, numberDays) {
     var dates = [];
     var s;
 
-    if (date) {
-        s = new Date(date);
+    if (startDate) {
+        s = new Date(startDate);
     } else {
         s = new Date();
     }
 
-    while (dates.length < 10) {
+    while (dates.length < numberDays) {
         s.setDate(s.getDate() + 1);
         if (s.getDay() < 1 || s.getDay() > 5) {
             continue;
@@ -54,11 +54,15 @@ function processEarningsCalendar(data, dates) {
     return cal;
 }
 
-function sendWeeklyEarningsCalendar() {
-    var dates = getDates();
+var getEarningsCalendarMessage = function(numberDays) {
+    var dates = getDates(0, numberDays);
     var earnings = getEarningsCalendar(dates[0], dates[dates.length - 1]);
     var cal = processEarningsCalendar(earnings, dates);
-    var message = renderEarningsCalendar(cal, dates);
+    return renderEarningsCalendar(cal, dates);
+}
+
+function sendWeeklyEarningsCalendar() {
+    var message = getEarningsCalendarMessage(10);
 
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var url = spreadsheet.getUrl();
@@ -77,7 +81,8 @@ function sendWeeklyEarningsCalendar() {
 }
 
 function renderEarningsCalendar(data, dates) {
-    var message = '<table style="float: left; margin: 0 25px 0 0;">';
+    var message = '<div style="display: inline; float: left; margin: 0 35px 0 0;"><h3>Earnings Calendar</h3>';
+    message = message + '<table style="float: left; margin: 0 25px 0 0;">';
 
     for (var i = 0; i < data.length; i++) {
         message = message + (i % 2 === 0 ? '<tr style="background-color: lightgrey;">' : '<tr>');
@@ -89,7 +94,22 @@ function renderEarningsCalendar(data, dates) {
         '</tr>';
     }
 
-    return message + '</table>';
+    return message + '</table></div>';
+}
+
+var getTrendingTicks = function(start, end) {
+    var response = UrlFetchApp.fetch(TRENDING_ENDPOINT);
+    return JSON.parse(response.getContentText());
+}
+
+var processTrendingTicks = function(data) {
+    var ticks = [];
+    if (data && data.response.status == 200) {
+        data.symbols.forEach(function(trend) {
+            ticks.push(trend.symbol);
+        });
+    }
+    return ticks;
 }
 
 module.exports = {
