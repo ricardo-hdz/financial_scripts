@@ -85,12 +85,8 @@ function sendBriefing() {
         return;
     }
 
-    var message = getEarningsCalendarMessage(2);
-    message = message + getPortfolioPercentiles();
-
-    var trendingData = getTrendingTicks();
-    var ticks = processTrendingTicks(trendingData);
-    message = message + renderTrendingTicks(ticks);
+    // var message = getEarningsCalendarMessage(2);
+    var message = getPortfolioPercentiles();
 
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var url = spreadsheet.getUrl();
@@ -101,8 +97,10 @@ function sendBriefing() {
 
     var microdata = '<div itemscope itemtype="http://schema.org/EmailMessage">' +
         '<div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">' +
-        '<link itemprop="target" href="' + url + '"' +
-        '<meta itemprop="name" content="Track Protfolio & Market"/>' +
+            '<link itemprop="target" href="' + url + '"/>' +
+            '<meta itemprop="name" content="Track Protfolio & Market"/>' +
+        '</div>' +
+        '<meta itemprop="description" content="Track Protfolio & Market"/>' +
         '</div>';
 
     MailApp.sendEmail(owner.getEmail(), 'Market Intelligence - ' + type + ' Briefing ' + getToday(), message, {
@@ -171,47 +169,6 @@ function renderMovers(group, color, message) {
     };
 
     message = message + '</table>';
-
-    return message;
-}
-
-function renderTrendingTicks(ticks) {
-    var message = '<div style="display: inline; float: left; margin: 0 35px 0 0;"><h3>Trending Stocks</h3>';
-    var colorFirst, colorTwo;
-
-    message = message +
-        '<table style="float: left; margin: 0 25px 0 0;">' +
-            '<tr>' +
-                '<td><b>Tick</b></td>' +
-                '<td style="padding-left: 25px;"><b>Tick</b></td>'  +
-            '</tr>';
-
-    for (var i = 0; i < ticks.length -1; i+=2) {
-        colorFirst = portfolioTicks.indexOf(ticks[i]) > -1 ? 'green' : 'black';
-        colorTwo = portfolioTicks.indexOf(ticks[i+1]) > -1 ? 'green' : 'black';
-
-        message = message +
-            '<tr>' +
-            '<td>' +
-                '<b>' +
-                '<a style="color: ' + colorFirst + '; "' +
-                    ' href="https://finance.yahoo.com/quote/' + ticks[i] + '/key-statistics?p=' +
-                    ticks[i] + '">' + ticks[i] +
-                '</a>' +
-                '</b>' +
-            '</td>' +
-            '<td style="padding-left: 25px;">' +
-                '<b>' +
-                '<a style="color: ' + colorTwo + '; "' +
-                    ' href="https://finance.yahoo.com/quote/' + ticks[i+1] + '/key-statistics?p=' +
-                    ticks[i+1] + '">' + ticks[i+1] +
-                '</a>' +
-                '</b>' +
-            '</td>' +
-        '</tr>';
-    }
-
-    message = message + '</table></div>';
 
     return message;
 }
