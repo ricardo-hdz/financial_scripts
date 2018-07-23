@@ -64,7 +64,7 @@ function processEarningsTicks(data, dates) {
                 var earnings = data.earnings[date];
                 if (earnings.hasOwnProperty('stocks') && earnings.stocks) {
                     earnings.stocks.forEach(function(tick) {
-                        ticks.push(tick.symbol);
+                        ticks.push(tick.symbol + ';' + date);
                     });
                 }
             }
@@ -77,10 +77,19 @@ function setEarningTicksInSheet(ticks) {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var earningsSheet = spreadsheet.getSheetByName('Earnings');
     var ticksRange = earningsSheet.getRange('A2:A');
+    var dateRange = earningsSheet.getRange('B2:B');
+    var values;
     ticksRange.clearContent();
+    dateRange.clearContent();
     for (var i = 0, cell; i < ticks.length; i++) {
         ticksRange = earningsSheet.getRange('A' + (i + 2));
-        ticksRange.setValue(ticks[i]);
+        dateRange = earningsSheet.getRange('B' + (i + 2));
+        // splits <TICK>;<date>
+        values = ticks[i].split(';');
+        if (values.length > 1) {
+            ticksRange.setValue(values[0]);
+            dateRange.setValue(values[1]);
+        }
     }
 }
 
