@@ -2,11 +2,19 @@ function onOpen() {
     setExchangeRate();
 }
 
-//var TRENDING_ENDPOINT = 'Your own endpoint';
-//var ENDPOINT_RATES = 'Your own endpoint';
+// var TRENDING_ENDPOINT = 'Your own endpoint';
+// var ENDPOINT_RATES = 'Your own endpoint';
+// var GOLD_ENDPOINT = 'Your own endpoint';
+// var BITCOIN_ENDPOINT = 'Your own endpoint';
 
 var portfolioTicks = [];
+var exchangeRate;
 
+/**
+ * Gets the latest exchange rate for a given currency
+ * @param {String} currency
+ * @returns {String}
+ */
 function getLatestExchangeRate(currency) {
     var url = ENDPOINT_RATES.replace('{currency}', currency);
     var response = UrlFetchApp.fetch(url);
@@ -18,19 +26,75 @@ function getLatestExchangeRate(currency) {
     return rate;
 }
 
+/**
+ * Gets the current bitcoin price
+ * @returns {String}
+ */
+function getBitcoinPrice() {
+    var response = UrlFetchApp.fetch(BITCOIN_ENDPOINT);
+    var r = JSON.parse(response.getContentText());
+    var rate = 0.0;
+    if (r && r.data && r.data.amount) {
+        var rate = r.data.amount;
+    }
+    return rate;
+}
+
+/**
+ * Gets the spot prices for Gold and Silver
+ * You can overwrite this function with your custom endpoint
+ * and logic to parse values.
+ * @returns {String}
+ */
+function getMetalPrices() {
+    var options = {
+        contentType: 'text/plain;charset=UTF-8',
+        headers: {
+            origin: GOLD_ORIGIN
+        }
+    };
+    var r = UrlFetchApp.fetch(GOLD_ENDPOINT, options);
+    return r.getContentText();
+}
+
+function processMetalPrices(data) {
+    data = data || getMetalPrices();
+    var metals = data.split('\n');
+    var goldData = metals[1].split(',');
+    var silverData = metals[0].split(',');
+    return {
+        gold: getMetalData(goldData),
+        silver: getMetalData(silverData)
+    };
+}
+// exports.processMetalPrices = processMetalPrices;
+
+/**
+ * Process plain text data string and retrives
+ * a metal value price (min/max) and variation (usd/pct)
+ * @param {*} data
+ */
+function getMetalData(data) {
+    return {
+        'min': data[data.length - 2],
+        'max': data[data.length - 1],
+        'var_usd': data[data.length - 4],
+        'var_pct': data[data.length - 3]
+    };
+}
+
+
 function setExchangeRate() {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var master = spreadsheet.getSheetByName('Master');
-    var rate = getLatestExchangeRate('mxn');
-    master.getRange('E64').setValue(rate);
+    exchangeRate = getLatestExchangeRate('mxn');
+    master.getRange('E64').setValue(exchangeRate);
 }
 
 /**
 * Determines worst and best performers of day
 */
 function getPortfolioPercentiles() {
-    setExchangeRate();
-
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var percentilesSheet = spreadsheet.getSheetByName('Percentiles');
     var managedPortfolioSheet = spreadsheet.getSheetByName('Managed Portfolio');
@@ -85,8 +149,13 @@ function sendBriefing() {
         return;
     }
 
+    setExchangeRate();
+
+    var message = constructCurrenciesMessage();
+    message = message + constructMetalsMessage();
+
     // var message = getEarningsCalendarMessage(2);
-    var message = getPortfolioPercentiles();
+    message = message + getPortfolioPercentiles();
 
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var url = spreadsheet.getUrl();
@@ -108,6 +177,77 @@ function sendBriefing() {
         htmlBody: message + microdata
     });
 }
+
+function constructCurrenciesMessage() {
+    var bitcoinPrice = getBitcoinPrice();
+    var currencies = {
+        MXN: {
+            rate: exchangeRate,
+            url: 'https://www.bloomberg.com/markets/currencies/americas'
+        },
+        Bitcoin: {
+            rate: getBitcoinPrice(),
+            url: 'https://pro.coinbase.com/trade'
+        }
+    };
+
+    var message = '<div style="display: inline; float: left; margin: 0 35px 0 0;"><h3>Currencies</h3>';
+    message = message +
+        '<table style="float: left; margin: 0 25px 0 0;">' +
+            '<tr>' +
+                '<td><b>Currency</b></td>' +
+                '<td><b>Current Rate</b></td>' +
+            '</tr>';
+
+    for (var currency in currencies) {
+        var data = currencies[currency];
+        message = message +
+            '<tr>' +
+                '<td>' +
+                    '<a href="' + data.url + '">' + currency + '</a>' +
+                '</td>' +
+                '<td>' + data.rate + '</td>' +
+            '</tr>';
+    }
+
+    message = message + '</table></div>';
+    return message;
+}
+
+function constructMetalsMessage() {
+    var data = processMetalPrices();
+
+    var message = '<div style="display: inline; float: left; margin: 0 35px 0 0;"><h3>Metals</h3>';
+    message = message +
+        '<table style="float: left; margin: 0 25px 0 0;">' +
+            '<tr>' +
+                '<td><b>Metal</b></td>' +
+                '<td><b>Min</b></td>' +
+                '<td><b>Max</b></td>' +
+                '<td><b>Var USD</b></td>' +
+                '<td><b>Var %</b></td>' +
+            '</tr>';
+
+    for (var metal in data) {
+        message = message + contructMetalTableRow(metal, data[metal]);
+    }
+
+    message = message + '</table></div>';
+    return message;
+}
+
+function contructMetalTableRow(metal, data) {
+    var color = parseFloat(data.var_pct) < 0 ? 'red' : 'green';
+
+    return '<tr>' +
+        '<td>' + metal + '</td>' +
+        '<td>' + data.min + '</td>' +
+        '<td>' + data.max + '</td>' +
+        '<td style="color: ' + color + ';">' + data.var_usd + '</td>' +
+        '<td style="color: ' + color + ';">' + data.var_pct + '</td>' +
+    '</tr>';
+}
+
 
 function constructPortfolioMessage(portfolioName, movers) {
     var message = '<div style="display: inline; float: left; margin: 0 35px 0 0;"><h3>' + portfolioName + getToday() + '</h3>';

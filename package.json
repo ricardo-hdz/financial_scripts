@@ -25,6 +25,7 @@
   "dependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "require-text": "0.0.1"
   }
 }
