@@ -5,7 +5,6 @@ function onOpen() {
 // var TRENDING_ENDPOINT = 'Your own endpoint';
 // var ENDPOINT_RATES = 'Your own endpoint';
 // var GOLD_ENDPOINT = 'Your own endpoint';
-// var BITCOIN_ENDPOINT = 'Your own endpoint';
 
 var portfolioTicks = [];
 var exchangeRate;
@@ -265,7 +264,7 @@ function getMovers(sheet, low, high) {
     };
 
     for (var i = 2, tick; (tick = sheet.getRange('A' + i).getValue()); i++) {
-        var sold = sheet.getRange('Y' + i).getValue();
+        var sold = sheet.getRange('AA' + i).getValue();
         if (sold !== '') {
             continue;
         }
@@ -274,7 +273,7 @@ function getMovers(sheet, low, high) {
             portfolioTicks.push(tick);
         }
 
-        var change = sheet.getRange('O' + i).getValue();
+        var change = sheet.getRange('Q' + i).getValue();
         if (change <= low && !movers.worst.hasOwnProperty(tick)) {
             movers.worst[tick] = change;
         } else if (change >= high && !movers.best.hasOwnProperty(tick)) {
