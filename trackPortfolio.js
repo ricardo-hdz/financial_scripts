@@ -28,18 +28,18 @@ function trackPortfolio() {
     dateCell.setValue(getToday());
     // row, column, numRows
     // need to define one row less in sum
-    var sumRange = historicSheet.getRange(2, lastColumn, 68);
+    var sumRange = historicSheet.getRange(2, lastColumn, 73);
     var sumRangeNotation = sumRange.getA1Notation();
-    var sumCell = historicSheet.getRange(70, lastColumn);
+    var sumCell = historicSheet.getRange(75, lastColumn);
     sumCell.setValue('=SUM(' + sumRangeNotation + ')');
 
-    var previousSumCell = historicSheet.getRange(70, lastColumn-1.0);
+    var previousSumCell = historicSheet.getRange(75, lastColumn-1.0);
 
-    var diffCell = historicSheet.getRange(71, lastColumn);
+    var diffCell = historicSheet.getRange(76, lastColumn);
     var currentValue = sumCell.getValue();
     var pastValue = previousSumCell.getValue();
     diffCell.setValue('=' + sumCell.getA1Notation() + '-' + previousSumCell.getA1Notation());
-    var pctCell = historicSheet.getRange(72, lastColumn);
+    var pctCell = historicSheet.getRange(77, lastColumn);
     pctCell.setNumberFormat('00.00%');
     pctCell.setValue('=' + diffCell.getA1Notation() + '/' + previousSumCell.getA1Notation());
 

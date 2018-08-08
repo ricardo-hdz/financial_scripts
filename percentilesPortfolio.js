@@ -1,5 +1,6 @@
 function onOpen() {
     setExchangeRate();
+    setBitcoinRate();
 }
 
 // var TRENDING_ENDPOINT = 'Your own endpoint';
@@ -8,6 +9,7 @@ function onOpen() {
 
 var portfolioTicks = [];
 var exchangeRate;
+var bitcoinRate;
 
 /**
  * Gets the latest exchange rate for a given currency
@@ -90,6 +92,13 @@ function setExchangeRate() {
     master.getRange('E64').setValue(exchangeRate);
 }
 
+function setBitcoinRate() {
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var master = spreadsheet.getSheetByName('Master');
+    bitcoinRate = getBitcoinPrice();
+    master.getRange('E72').setValue(bitcoinRate);
+}
+
 /**
 * Determines worst and best performers of day
 */
@@ -149,6 +158,7 @@ function sendBriefing() {
     }
 
     setExchangeRate();
+    setBitcoinRate();
 
     var message = constructCurrenciesMessage();
     message = message + constructMetalsMessage();
