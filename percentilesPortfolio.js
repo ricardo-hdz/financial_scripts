@@ -1,30 +1,40 @@
 function onOpen() {
-    setExchangeRate();
+    setExchangeRates();
     setBitcoinRate();
+    setMetalPrices();
 }
 
 // var TRENDING_ENDPOINT = 'Your own endpoint';
 // var ENDPOINT_RATES = 'Your own endpoint';
 // var GOLD_ENDPOINT = 'Your own endpoint';
+// var EXCHANGE_RATE_CHART_ENDPOINT = 'Your own endpoint';
+
+// Currencies to track in portfolio
+var CURRENCIES = ['MXN','JPY','CNY','KRW'];
 
 var portfolioTicks = [];
-var exchangeRate;
+var exchangeRates = {};
 var bitcoinRate;
+var metalsRate;
 
 /**
  * Gets the latest exchange rate for a given currency
  * @param {String} currency
  * @returns {String}
  */
-function getLatestExchangeRate(currency) {
-    var url = ENDPOINT_RATES.replace('{currency}', currency);
+function getLatestExchangeRates(currency) {
+    var currencies = currency ? currency : CURRENCIES.join(',');
+    var url = ENDPOINT_RATES.replace('{currency}', currencies);
     var response = UrlFetchApp.fetch(url);
     var data = JSON.parse(response.getContentText());
     var rate = 0.0;
-    if (data && data.quotes && data.quotes.USDMXN) {
-        var rate = data.quotes.USDMXN;
+    if (data && data.quotes && data.quotes) {
+        currencies = currencies.split(',');
+        for (var i = 0, c; (c = currencies[i]); i++) {
+            exchangeRates[c] = data.quotes['USD' + c] ? data.quotes['USD' + c] : 0.0;
+        }
     }
-    return rate;
+    return exchangeRates;
 }
 
 /**
@@ -85,11 +95,11 @@ function getMetalData(data) {
 }
 
 
-function setExchangeRate() {
+function setExchangeRates() {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var master = spreadsheet.getSheetByName('Master');
-    exchangeRate = getLatestExchangeRate('mxn');
-    master.getRange('E64').setValue(exchangeRate);
+    exchangeRates = getLatestExchangeRates();
+    master.getRange('E64').setValue(exchangeRates.MXN);
 }
 
 function setBitcoinRate() {
@@ -97,6 +107,17 @@ function setBitcoinRate() {
     var master = spreadsheet.getSheetByName('Master');
     bitcoinRate = getBitcoinPrice();
     master.getRange('E72').setValue(bitcoinRate);
+}
+
+/**
+ * Sets the current metal data into spreadsheet
+ */
+function setMetalPrices() {
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var metals = spreadsheet.getSheetByName('Metals');
+    metalsRate = processMetalPrices();
+    metals.getRange('T2').setValue((parseFloat(metalsRate.gold.max) + parseFloat(metalsRate.gold.min))/2);
+    metals.getRange('T3').setValue((parseFloat(metalsRate.silver.max) + parseFloat(metalsRate.silver.min))/2);
 }
 
 /**
@@ -157,7 +178,7 @@ function sendBriefing() {
         return;
     }
 
-    setExchangeRate();
+    setExchangeRates();
     setBitcoinRate();
 
     var message = constructCurrenciesMessage();
@@ -189,15 +210,18 @@ function sendBriefing() {
 
 function constructCurrenciesMessage() {
     var bitcoinPrice = getBitcoinPrice();
-    var currencies = {
-        MXN: {
-            rate: exchangeRate,
-            url: 'https://www.bloomberg.com/markets/currencies/americas'
-        },
-        Bitcoin: {
-            rate: getBitcoinPrice(),
-            url: 'https://pro.coinbase.com/trade'
+    var currencies = {};
+    for (var i = 0, c; (c = CURRENCIES[i]); i++) {
+        if (exchangeRates.hasOwnProperty(c) && exchangeRates[c]) {
+            currencies[c] = {
+                rate: exchangeRates[c],
+                url: EXCHANGE_RATE_CHART_ENDPOINT.replace('{currency}', c)
+            };
         }
+    }
+    currencies['Bitcoin'] = {
+        rate: getBitcoinPrice(),
+        url: 'https://pro.coinbase.com/trade'
     };
 
     var message = '<div style="display: inline; float: left; margin: 0 35px 0 0;"><h3>Currencies</h3>';
