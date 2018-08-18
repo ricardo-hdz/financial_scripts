@@ -17,6 +17,10 @@ var exchangeRates = {};
 var bitcoinRate;
 var metalsRate;
 
+// Column constants
+var SOLD_COLUMN = 'AB';
+var CHANGE_COLUMN = 'R';
+
 /**
  * Gets the latest exchange rate for a given currency
  * @param {String} currency
@@ -298,7 +302,7 @@ function getMovers(sheet, low, high) {
     };
 
     for (var i = 2, tick; (tick = sheet.getRange('A' + i).getValue()); i++) {
-        var sold = sheet.getRange('AA' + i).getValue();
+        var sold = sheet.getRange(SOLD_COLUMN + i).getValue();
         if (sold !== '') {
             continue;
         }
@@ -307,7 +311,7 @@ function getMovers(sheet, low, high) {
             portfolioTicks.push(tick);
         }
 
-        var change = sheet.getRange('Q' + i).getValue();
+        var change = sheet.getRange(CHANGE_COLUMN + i).getValue();
         if (change <= low && !movers.worst.hasOwnProperty(tick)) {
             movers.worst[tick] = change;
         } else if (change >= high && !movers.best.hasOwnProperty(tick)) {
