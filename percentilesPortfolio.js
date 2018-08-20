@@ -18,8 +18,10 @@ var bitcoinRate;
 var metalsRate;
 
 // Column constants
-var SOLD_COLUMN = 'AB';
-var CHANGE_COLUMN = 'R';
+var SOLD_COLUMN = 'AC';
+var CHANGE_COLUMN = 'S';
+var EXCHANGE_RATE_CELL = 'F64';
+var BITCOIN_RATE_CELL = 'F72';
 
 /**
  * Gets the latest exchange rate for a given currency
@@ -103,14 +105,14 @@ function setExchangeRates() {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var master = spreadsheet.getSheetByName('Master');
     exchangeRates = getLatestExchangeRates();
-    master.getRange('E64').setValue(exchangeRates.MXN);
+    master.getRange(EXCHANGE_RATE_CELL).setValue(exchangeRates.MXN);
 }
 
 function setBitcoinRate() {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var master = spreadsheet.getSheetByName('Master');
     bitcoinRate = getBitcoinPrice();
-    master.getRange('E72').setValue(bitcoinRate);
+    master.getRange(BITCOIN_RATE_CELL).setValue(bitcoinRate);
 }
 
 /**
