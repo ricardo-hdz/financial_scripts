@@ -1,6 +1,5 @@
 function onOpen() {
     setExchangeRates();
-    setBitcoinRate();
     setMetalPrices();
 }
 
@@ -12,6 +11,11 @@ function onOpen() {
 // Currencies to track in portfolio
 var CURRENCIES = ['MXN','JPY','CNY','KRW'];
 
+var UTILITIES_SHEET = 'Utilities';
+
+/**
+ * Global variables to track percentiles and exchange rates
+ */
 var portfolioTicks = [];
 var exchangeRates = {};
 var bitcoinRate;
@@ -22,6 +26,16 @@ var SOLD_COLUMN = 'AC';
 var CHANGE_COLUMN = 'S';
 var EXCHANGE_RATE_CELL = 'F64';
 var BITCOIN_RATE_CELL = 'F72';
+
+/**
+ * Constants to track currencies in portfolio
+ * See Utilities sheet
+ */
+var CURRENCIES_HISTORICAL_NAME = 'E';
+var CURRENCIES_HISTORICAL_PREVIOUS = 'F';
+var CURRENCIES_HISTORICAL_CURRENT = 'G';
+var CURRENCIES_HISTORICAL_VARIATION = 'H';
+var CURRENCIES_START_ROW = 2;
 
 /**
  * Gets the latest exchange rate for a given currency
@@ -104,15 +118,28 @@ function getMetalData(data) {
 function setExchangeRates() {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var master = spreadsheet.getSheetByName('Master');
+
+    // Get and set exchange rates
     exchangeRates = getLatestExchangeRates();
     master.getRange(EXCHANGE_RATE_CELL).setValue(exchangeRates.MXN);
-}
-
-function setBitcoinRate() {
-    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    var master = spreadsheet.getSheetByName('Master');
     bitcoinRate = getBitcoinPrice();
     master.getRange(BITCOIN_RATE_CELL).setValue(bitcoinRate);
+
+    // Set exchange rates in utilities
+    var utilitiesSheet = spreadsheet.getSheetByName(UTILITIES_SHEET);
+
+    var i = 0;
+    for (var c; (c = CURRENCIES[i]); i++) {
+        utilitiesSheet.getRange(CURRENCIES_HISTORICAL_NAME + (CURRENCIES_START_ROW + i)).setValue(c);
+        var currentRange = utilitiesSheet.getRange(CURRENCIES_HISTORICAL_CURRENT + (CURRENCIES_START_ROW + i));
+        utilitiesSheet.getRange(CURRENCIES_HISTORICAL_PREVIOUS + (CURRENCIES_START_ROW + i)).setValue(currentRange.getValue());
+        currentRange.setValue(exchangeRates[c]);
+    }
+
+    utilitiesSheet.getRange(CURRENCIES_HISTORICAL_NAME + (CURRENCIES_START_ROW + i)).setValue('BTC');
+    currentRange = utilitiesSheet.getRange(CURRENCIES_HISTORICAL_CURRENT + (CURRENCIES_START_ROW + i));
+    utilitiesSheet.getRange(CURRENCIES_HISTORICAL_PREVIOUS + (CURRENCIES_START_ROW + i)).setValue(currentRange.getValue());
+    utilitiesSheet.getRange(CURRENCIES_HISTORICAL_CURRENT + (CURRENCIES_START_ROW + i)).setValue(bitcoinRate);
 }
 
 /**
@@ -131,7 +158,7 @@ function setMetalPrices() {
 */
 function getPortfolioPercentiles() {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    var percentilesSheet = spreadsheet.getSheetByName('Percentiles');
+    var percentilesSheet = spreadsheet.getSheetByName(UTILITIES_SHEET);
     var managedPortfolioSheet = spreadsheet.getSheetByName('Managed Portfolio');
     var passivePortfolioSheet = spreadsheet.getSheetByName('Passive Portfolio');
     var kuspitSheet = spreadsheet.getSheetByName('Kuspit');
@@ -185,7 +212,6 @@ function sendBriefing() {
     }
 
     setExchangeRates();
-    setBitcoinRate();
 
     var message = constructCurrenciesMessage();
     message = message + constructMetalsMessage();
@@ -215,37 +241,44 @@ function sendBriefing() {
 }
 
 function constructCurrenciesMessage() {
-    var bitcoinPrice = getBitcoinPrice();
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var utilitiesSheet = spreadsheet.getSheetByName(UTILITIES_SHEET);
+    var numberOfCurrencies =  CURRENCIES.length + 1;
+    var range = utilitiesSheet.getRange(CURRENCIES_HISTORICAL_NAME + CURRENCIES_START_ROW + ':' + CURRENCIES_HISTORICAL_VARIATION + (CURRENCIES_START_ROW + numberOfCurrencies));
+    var values = range.getValues();
+
+    // var bitcoinPrice = getBitcoinPrice();
     var currencies = {};
-    for (var i = 0, c; (c = CURRENCIES[i]); i++) {
-        if (exchangeRates.hasOwnProperty(c) && exchangeRates[c]) {
-            currencies[c] = {
-                rate: exchangeRates[c],
-                url: EXCHANGE_RATE_CHART_ENDPOINT.replace('{currency}', c)
-            };
-        }
+    for (var i = 0, c; i < numberOfCurrencies; i++) {
+        currencies[values[i][0]] = {
+            previous: parseFloat(values[i][1]).toFixed(2),
+            current: parseFloat(values[i][2]).toFixed(2),
+            change: (parseFloat(values[i][3])*100).toFixed(2),
+            url: EXCHANGE_RATE_CHART_ENDPOINT.replace('{currency}', c)
+        };
     }
-    currencies['Bitcoin'] = {
-        rate: getBitcoinPrice(),
-        url: 'https://pro.coinbase.com/trade'
-    };
 
     var message = '<div style="display: inline; float: left; margin: 0 35px 0 0;"><h3>Currencies</h3>';
     message = message +
         '<table style="float: left; margin: 0 25px 0 0;">' +
             '<tr>' +
                 '<td><b>Currency</b></td>' +
-                '<td><b>Current Rate</b></td>' +
+                '<td><b>Previous</b></td>' +
+                '<td><b>Current</b></td>' +
+                '<td><b>Change %</b></td>' +
             '</tr>';
 
     for (var currency in currencies) {
         var data = currencies[currency];
+        var color = data.change < 0 ? 'red' : 'green';
         message = message +
             '<tr>' +
                 '<td>' +
                     '<a href="' + data.url + '">' + currency + '</a>' +
                 '</td>' +
-                '<td>' + data.rate + '</td>' +
+                '<td>' + data.previous + '</td>' +
+                '<td>' + data.current + '</td>' +
+                '<td style="color: ' + color + ';">' + data.change + '%</td>' +
             '</tr>';
     }
 
