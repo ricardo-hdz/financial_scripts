@@ -25,7 +25,7 @@ var metalsRate;
 var SOLD_COLUMN = 'AC';
 var CHANGE_COLUMN = 'S';
 var EXCHANGE_RATE_CELL = 'F64';
-var BITCOIN_RATE_CELL = 'F72';
+var BITCOIN_RATE_CELL = 'F73';
 
 /**
  * Constants to track currencies in portfolio
