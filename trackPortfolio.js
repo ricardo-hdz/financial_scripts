@@ -43,9 +43,9 @@ function trackPortfolio() {
     pctCell.setNumberFormat('00.00%');
     pctCell.setValue('=' + diffCell.getA1Notation() + '/' + previousSumCell.getA1Notation());
 
-    var totalValue = parseFloat(sumCell.getValue());
-    var diffValue = parseFloat(diffCell.getValue());
-    var pctValue = parseFloat(pctCell.getValue() * 100);
+    var totalValue = parseFloat(sumCell.getValue()).toFixed(2);
+    var diffValue = parseFloat(diffCell.getValue()).toFixed(2);
+    var pctValue = parseFloat(pctCell.getValue() * 100).toFixed(2);
 
     var color = diffValue > 0 ? 'green' : 'red';
 
@@ -65,7 +65,7 @@ function trackPortfolio() {
             '</tr>' +
             '<tr>' +
                 '<td><b>Percentage Variation</b></td>' +
-                '<td style="color: ' + color + '"><b>' + pctValue + '</b></td>' +
+                '<td style="color: ' + color + '"><b>' + pctValue + ' %</b></td>' +
             '</tr>' +
         '</table>';
 
