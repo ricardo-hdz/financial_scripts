@@ -48,7 +48,9 @@ function processEarningsCalendar(data, dates) {
             if (data.earnings.hasOwnProperty(date) && data.earnings[date]) {
                 var day = data.earnings[date];
                 var copy = day.selected_copy ? day.selected_copy : 'No earnings found';
-                cal.push(copy);
+                if (copy.toLowerCase().indexOf('sorry') == -1) {
+                    cal.push(copy);
+                }
             }
         });
     }
@@ -114,7 +116,7 @@ function sendDailyTrendingReport() {
 
     // Send briefing only on market days
     if (d.getDay() === 0) {
-        return;
+         return;
     }
 
     var dates = getDates(0, 10);
@@ -150,19 +152,26 @@ function sendDailyTrendingReport() {
 
 function renderEarningsCalendar(data, dates) {
     var message = '<div style="display: inline; float: left; margin: 0 35px 0 0;"><h3>Earnings Calendar</h3>';
-    message = message + '<table style="float: left; margin: 0 25px 0 0;">';
 
-    for (var i = 0; i < data.length; i++) {
-        message = message + (i % 2 === 0 ? '<tr style="background-color: lightgrey;">' : '<tr>');
-        message = message +
-            '<td>' +
-                '<b>' + dates[i] + '</b>' +
-            '</td>' +
-            '<td style="padding-left: 50px;">' + data[i] + '</td>' +
-        '</tr>';
+    if (data.length > 0) {
+        message = message + '<table style="float: left; margin: 0 25px 0 0;">';
+
+        for (var i = 0; i < data.length; i++) {
+            message = message + (i % 2 === 0 ? '<tr style="background-color: lightgrey;">' : '<tr>');
+            message = message +
+                '<td>' +
+                    '<b>' + dates[i] + '</b>' +
+                '</td>' +
+                '<td style="padding-left: 50px;">' + data[i] + '</td>' +
+            '</tr>';
+        }
+
+        message = message + '</table>';
+    } else {
+        message = message + '<div>No earnings reporting this week.</div>';
     }
 
-    return message + '</table></div>';
+    return message + '</div>';
 }
 
 function renderTrendingTicks(ticks) {
