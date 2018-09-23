@@ -9,7 +9,7 @@ function onOpen() {
 // var EXCHANGE_RATE_CHART_ENDPOINT = 'Your own endpoint';
 
 // Currencies to track in portfolio
-var CURRENCIES = ['MXN','JPY','CNY','KRW'];
+var CURRENCIES = ['MXN','JPY','CNY','EUR'];
 
 var UTILITIES_SHEET = 'Utilities';
 
