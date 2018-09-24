@@ -1,6 +1,8 @@
 /**
 * Copies the value of the detailed portfolio to the historic spreadsheet
 */
+var PORTFOLIOS_ROWS = [2,8,16,21,27,33,39,46,53,59,64,68,72,76];
+
 function trackPortfolio() {
     var d = new Date();
 
@@ -12,32 +14,40 @@ function trackPortfolio() {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var url = spreadsheet.getUrl();
     var owner = spreadsheet.getOwner();
+
+    // sheets
     var allocationSheet = spreadsheet.getSheetByName('Portfolio');
     var historicSheet = spreadsheet.getSheetByName('Historical Portfolio');
-    var lastRow = historicSheet.getLastRow() + 1;
+
     var lastColumn = historicSheet.getLastColumn();
     historicSheet.insertColumnAfter(lastColumn);
     lastColumn = historicSheet.getLastColumn() + 1;
 
-    var lastRowAllocation = allocationSheet.getLastRow() + 1;
-
+    // copy positions
     var allocationRange = allocationSheet.getRange('B2:B');
     allocationRange.copyValuesToRange(historicSheet, lastColumn, lastColumn, 2, 2 + allocationRange.getHeight());
+
+    // copy totals of positions (by portfolio)
+    var historicSheetRange;
+    var sumPortfoliosFormula = '=SUM(';
+    for (var i = 0, pr; (pr = PORTFOLIOS_ROWS[i]); i++) {
+        historicSheetRange = historicSheet.getRange(pr, lastColumn);
+        allocationSheet.getRange('C' + pr).copyTo(historicSheetRange, {contentsOnly: true});
+        sumPortfoliosFormula = sumPortfoliosFormula + historicSheetRange.getA1Notation() + ',';
+    }
+    sumPortfoliosFormula = sumPortfoliosFormula + ')';
 
     var dateCell = historicSheet.getRange(1, lastColumn);
     dateCell.setValue(getToday());
     // row, column, numRows
     // need to define one row less in sum
-    var sumRange = historicSheet.getRange(2, lastColumn, 77);
-    var sumRangeNotation = sumRange.getA1Notation();
     var sumCell = historicSheet.getRange(79, lastColumn);
-    sumCell.setValue('=SUM(' + sumRangeNotation + ')');
+    sumCell.setValue(sumPortfoliosFormula);
 
     var previousSumCell = historicSheet.getRange(79, lastColumn-1.0);
 
     var diffCell = historicSheet.getRange(80, lastColumn);
-    var currentValue = sumCell.getValue();
-    var pastValue = previousSumCell.getValue();
+
     diffCell.setValue('=' + sumCell.getA1Notation() + '-' + previousSumCell.getA1Notation());
     var pctCell = historicSheet.getRange(81, lastColumn);
     pctCell.setNumberFormat('00.00%');
