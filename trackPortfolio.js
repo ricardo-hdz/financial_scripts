@@ -2,6 +2,8 @@
 * Copies the value of the detailed portfolio to the historic spreadsheet
 */
 var PORTFOLIOS_ROWS = [2,8,16,21,27,33,39,46,53,59,64,68,72,76];
+var VARIATION_ROWS = [81];
+var TOTAL_ROWS = [79];
 
 function trackPortfolio() {
     var d = new Date();
@@ -36,6 +38,8 @@ function trackPortfolio() {
         sumPortfoliosFormula = sumPortfoliosFormula + historicSheetRange.getA1Notation() + ',';
     }
     sumPortfoliosFormula = sumPortfoliosFormula + ')';
+
+    updateHistoricalCharts(lastColumn);
 
     var dateCell = historicSheet.getRange(1, lastColumn);
     dateCell.setValue(getToday());
@@ -91,6 +95,31 @@ function trackPortfolio() {
         name: 'Market Intelligence Bot',
         htmlBody: message + microdata
     });
+}
+
+function updateHistoricalCharts(lastColumn) {
+    var ORDER = [VARIATION_ROWS, TOTAL_ROWS, PORTFOLIOS_ROWS];
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    // sheets
+    var historicSheet = spreadsheet.getSheetByName('Historical Trends');
+    var historicalSheet = spreadsheet.getSheetByName('Historical Portfolio');
+    var lastRange;
+
+    var charts = historicSheet.getCharts();
+    for (var i = 0, chart; (chart = charts[i]); i++) {
+        var uChart = chart.modify();
+        var ranges = chart.getRanges();
+        var rows = ORDER[i];
+        rows.unshift(1);
+        for (var j = 0, range; (range = ranges[j]); j++) {
+            lastRange = historicalSheet.getRange(rows[j], lastColumn).getA1Notation();
+            var rangeStr = 'A' + rows[j] + ':' + lastRange;
+            uChart = uChart
+                .removeRange(range)
+                .addRange(historicalSheet.getRange(rangeStr));
+        }
+        historicSheet.updateChart(uChart.build());
+    }
 }
 
 function getToday() {
