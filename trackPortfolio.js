@@ -39,8 +39,6 @@ function trackPortfolio() {
     }
     sumPortfoliosFormula = sumPortfoliosFormula + ')';
 
-    updateHistoricalCharts(lastColumn);
-
     var dateCell = historicSheet.getRange(1, lastColumn);
     dateCell.setValue(getToday());
     // row, column, numRows
@@ -95,6 +93,9 @@ function trackPortfolio() {
         name: 'Market Intelligence Bot',
         htmlBody: message + microdata
     });
+
+    // update historical charts with latest data
+    updateHistoricalCharts(lastColumn);
 }
 
 function updateHistoricalCharts(lastColumn) {
@@ -106,10 +107,17 @@ function updateHistoricalCharts(lastColumn) {
     var lastRange;
 
     var charts = historicSheet.getCharts();
+    var rows;
+
     for (var i = 0, chart; (chart = charts[i]); i++) {
         var uChart = chart.modify();
         var ranges = chart.getRanges();
-        var rows = ORDER[i];
+        if (i > 2) {
+            // get single portfolio rows
+            rows = [PORTFOLIOS_ROWS[i -2]];
+        } else {
+            rows = ORDER[i];
+        }
         rows.unshift(1);
         for (var j = 0, range; (range = ranges[j]); j++) {
             lastRange = historicalSheet.getRange(rows[j], lastColumn).getA1Notation();
