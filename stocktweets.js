@@ -5,8 +5,13 @@ var portfolioTicks = [];
 
 function getEarningsCalendar(start, end) {
     var url = EARNINGS_ENDPOINT.replace('{start}', start);
+    var options = {
+        headers: {
+            origin: STOCKTWEETS_ORIGIN
+        }
+    };
     url = url.replace('{end}', end);
-    var response = UrlFetchApp.fetch(url);
+    var response = UrlFetchApp.fetch(url, options);
     return JSON.parse(response.getContentText());
 }
 
