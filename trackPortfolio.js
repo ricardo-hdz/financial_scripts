@@ -1,9 +1,16 @@
 /**
 * Copies the value of the detailed portfolio to the historic spreadsheet
 */
-var PORTFOLIOS_ROWS = [2,8,16,21,27,33,39,46,53,59,64,68,72,76];
+
+// CONST
+var TOTAL_ROW = 80;
+var DIFF_ROW = 81;
+var PCT_ROW = 82;
+var PORTFOLIOS_ROWS = [2,8,16,22,28,34,40,47,54,60,65,69,73,77];
 var VARIATION_ROWS = [81];
-var TOTAL_ROWS = [79];
+var TOTAL_ROWS = [80];
+
+var dailyVariationPortfolio = [];
 
 function trackPortfolio() {
     var d = new Date();
@@ -32,10 +39,13 @@ function trackPortfolio() {
     // copy totals of positions (by portfolio)
     var historicSheetRange;
     var sumPortfoliosFormula = '=SUM(';
+    var diffPortfolio;
     for (var i = 0, pr; (pr = PORTFOLIOS_ROWS[i]); i++) {
         historicSheetRange = historicSheet.getRange(pr, lastColumn);
         allocationSheet.getRange('C' + pr).copyTo(historicSheetRange, {contentsOnly: true});
         sumPortfoliosFormula = sumPortfoliosFormula + historicSheetRange.getA1Notation() + ',';
+        diffPortfolio = historicSheet.getRange(pr, lastColumn).getValue() - historicSheet.getRange(pr, lastColumn - 1).getValue();
+        dailyVariationPortfolio.push(diffPortfolio.toFixed(2));
     }
     sumPortfoliosFormula = sumPortfoliosFormula + ')';
 
@@ -43,15 +53,15 @@ function trackPortfolio() {
     dateCell.setValue(getToday());
     // row, column, numRows
     // need to define one row less in sum
-    var sumCell = historicSheet.getRange(79, lastColumn);
+    var sumCell = historicSheet.getRange(TOTAL_ROW, lastColumn);
     sumCell.setValue(sumPortfoliosFormula);
 
-    var previousSumCell = historicSheet.getRange(79, lastColumn-1.0);
+    var previousSumCell = historicSheet.getRange(TOTAL_ROW, lastColumn-1.0);
 
-    var diffCell = historicSheet.getRange(80, lastColumn);
+    var diffCell = historicSheet.getRange(DIFF_ROW, lastColumn);
 
     diffCell.setValue('=' + sumCell.getA1Notation() + '-' + previousSumCell.getA1Notation());
-    var pctCell = historicSheet.getRange(81, lastColumn);
+    var pctCell = historicSheet.getRange(PCT_ROW, lastColumn);
     pctCell.setNumberFormat('00.00%');
     pctCell.setValue('=' + diffCell.getA1Notation() + '/' + previousSumCell.getA1Notation());
 
@@ -60,7 +70,7 @@ function trackPortfolio() {
     var pctValue = parseFloat(pctCell.getValue() * 100).toFixed(2);
 
     var color = diffValue > 0 ? 'green' : 'red';
-
+    var msgVariation = renderDailyPortfolioVariation();
     var message = '<h3>Total Portfolio as of ' + getToday() + '</h3>' +
         '<table>' +
             '<tr>' +
@@ -79,6 +89,8 @@ function trackPortfolio() {
                 '<td><b>Percentage Variation</b></td>' +
                 '<td style="color: ' + color + '"><b>' + pctValue + ' %</b></td>' +
             '</tr>' +
+            '<tr></tr>' +
+            msgVariation +
         '</table>';
 
     var microdata = '<div itemscope itemtype="http://schema.org/EmailMessage">' +
@@ -97,6 +109,25 @@ function trackPortfolio() {
     // update historical charts with latest data
     updateHistoricalCharts(lastColumn);
 }
+
+function renderDailyPortfolioVariation() {
+    var portfolioName;
+    var msg = '';
+    var variation;
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var historicSheet = spreadsheet.getSheetByName('Historical Trends');
+    for (var i = 0; i <= dailyVariationPortfolio.length; i++) {
+        variation = dailyVariationPortfolio[i];
+        portfolioName = historicSheet.getRange(PORTFOLIOS_ROWS[i],1).getValue();
+        msg = msg +
+        '<tr>' +
+            '<td>' + portfolioName + '</td>' +
+            '<td>$' + variation + '</td>' +
+        '</tr>';
+    }
+    return msg;
+}
+
 
 function updateHistoricalCharts(lastColumn) {
     var ORDER = [VARIATION_ROWS, TOTAL_ROWS, PORTFOLIOS_ROWS];
