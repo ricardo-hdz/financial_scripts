@@ -3,12 +3,20 @@
 */
 
 // CONST
-var TOTAL_ROW = 80;
-var DIFF_ROW = 81;
-var PCT_ROW = 82;
-var PORTFOLIOS_ROWS = [2,8,16,22,28,34,40,47,54,60,65,69,73,77];
-var VARIATION_ROWS = [81];
-var TOTAL_ROWS = [80];
+var TOTAL_ROW = 87;
+var DIFF_ROW = 88;
+var PCT_ROW = 89;
+var PORTFOLIOS_ROWS = [2,8,16,22,28,34,40,47,54,60,65,69,73,78,81,84];
+var VARIATION_ROWS = [88];
+var TOTAL_ROWS = [87];
+
+function onOpen() {
+  var menuEntries = [
+    {name: "Track Portfolio", functionName: "trackPortfolio"}
+  ];
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  spreadsheet.addMenu("Portfolio Utilities", menuEntries);
+}
 
 var dailyVariationPortfolio = [];
 
@@ -25,43 +33,43 @@ function trackPortfolio() {
     var owner = spreadsheet.getOwner();
 
     // sheets
-    var allocationSheet = spreadsheet.getSheetByName('Portfolio');
-    var historicSheet = spreadsheet.getSheetByName('Historical Portfolio');
+    var portfolioSheet = spreadsheet.getSheetByName('Portfolio');
+    var historicalPortfolioSheet = spreadsheet.getSheetByName('Historical Portfolio');
 
-    var lastColumn = historicSheet.getLastColumn();
-    historicSheet.insertColumnAfter(lastColumn);
-    lastColumn = historicSheet.getLastColumn() + 1;
+    var lastColumn = historicalPortfolioSheet.getLastColumn();
+    historicalPortfolioSheet.insertColumnAfter(lastColumn);
+    lastColumn = historicalPortfolioSheet.getLastColumn() + 1;
 
     // copy positions
-    var allocationRange = allocationSheet.getRange('B2:B');
-    allocationRange.copyValuesToRange(historicSheet, lastColumn, lastColumn, 2, 2 + allocationRange.getHeight());
+    var allocationRange = portfolioSheet.getRange('B2:B');
+    allocationRange.copyValuesToRange(historicalPortfolioSheet, lastColumn, lastColumn, 2, 2 + allocationRange.getHeight());
 
     // copy totals of positions (by portfolio)
-    var historicSheetRange;
+    var historicalPortfolioSheetRange;
     var sumPortfoliosFormula = '=SUM(';
     var diffPortfolio;
     for (var i = 0, pr; (pr = PORTFOLIOS_ROWS[i]); i++) {
-        historicSheetRange = historicSheet.getRange(pr, lastColumn);
-        allocationSheet.getRange('C' + pr).copyTo(historicSheetRange, {contentsOnly: true});
-        sumPortfoliosFormula = sumPortfoliosFormula + historicSheetRange.getA1Notation() + ',';
-        diffPortfolio = historicSheet.getRange(pr, lastColumn).getValue() - historicSheet.getRange(pr, lastColumn - 1).getValue();
+        historicalPortfolioSheetRange = historicalPortfolioSheet.getRange(pr, lastColumn);
+        portfolioSheet.getRange('C' + pr).copyTo(historicalPortfolioSheetRange, {contentsOnly: true});
+        sumPortfoliosFormula = sumPortfoliosFormula + historicalPortfolioSheetRange.getA1Notation() + ',';
+        diffPortfolio = historicalPortfolioSheet.getRange(pr, lastColumn).getValue() - historicalPortfolioSheet.getRange(pr, lastColumn - 1).getValue();
         dailyVariationPortfolio.push(diffPortfolio.toFixed(2));
     }
     sumPortfoliosFormula = sumPortfoliosFormula + ')';
 
-    var dateCell = historicSheet.getRange(1, lastColumn);
+    var dateCell = historicalPortfolioSheet.getRange(1, lastColumn);
     dateCell.setValue(getToday());
     // row, column, numRows
     // need to define one row less in sum
-    var sumCell = historicSheet.getRange(TOTAL_ROW, lastColumn);
+    var sumCell = historicalPortfolioSheet.getRange(TOTAL_ROW, lastColumn);
     sumCell.setValue(sumPortfoliosFormula);
 
-    var previousSumCell = historicSheet.getRange(TOTAL_ROW, lastColumn-1.0);
+    var previousSumCell = historicalPortfolioSheet.getRange(TOTAL_ROW, lastColumn-1.0);
 
-    var diffCell = historicSheet.getRange(DIFF_ROW, lastColumn);
+    var diffCell = historicalPortfolioSheet.getRange(DIFF_ROW, lastColumn);
 
     diffCell.setValue('=' + sumCell.getA1Notation() + '-' + previousSumCell.getA1Notation());
-    var pctCell = historicSheet.getRange(PCT_ROW, lastColumn);
+    var pctCell = historicalPortfolioSheet.getRange(PCT_ROW, lastColumn);
     pctCell.setNumberFormat('00.00%');
     pctCell.setValue('=' + diffCell.getA1Notation() + '/' + previousSumCell.getA1Notation());
 
@@ -115,10 +123,10 @@ function renderDailyPortfolioVariation() {
     var msg = '';
     var variation;
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    var historicSheet = spreadsheet.getSheetByName('Historical Trends');
-    for (var i = 0; i <= dailyVariationPortfolio.length; i++) {
+    var historicalPortfolioSheet = spreadsheet.getSheetByName('Historical Portfolio');
+    for (var i = 0; i < dailyVariationPortfolio.length; i++) {
         variation = dailyVariationPortfolio[i];
-        portfolioName = historicSheet.getRange(PORTFOLIOS_ROWS[i],1).getValue();
+        portfolioName = historicalPortfolioSheet.getRange(PORTFOLIOS_ROWS[i],1).getValue();
         msg = msg +
         '<tr>' +
             '<td>' + portfolioName + '</td>' +
@@ -133,11 +141,11 @@ function updateHistoricalCharts(lastColumn) {
     var ORDER = [VARIATION_ROWS, TOTAL_ROWS, PORTFOLIOS_ROWS];
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     // sheets
-    var historicSheet = spreadsheet.getSheetByName('Historical Trends');
+    var historicalPortfolioSheet = spreadsheet.getSheetByName('Historical Trends');
     var historicalSheet = spreadsheet.getSheetByName('Historical Portfolio');
     var lastRange;
 
-    var charts = historicSheet.getCharts();
+    var charts = historicalPortfolioSheet.getCharts();
     var rows;
 
     for (var i = 0, chart; (chart = charts[i]); i++) {
@@ -157,7 +165,7 @@ function updateHistoricalCharts(lastColumn) {
                 .removeRange(range)
                 .addRange(historicalSheet.getRange(rangeStr));
         }
-        historicSheet.updateChart(uChart.build());
+        historicalPortfolioSheet.updateChart(uChart.build());
     }
 }
 
