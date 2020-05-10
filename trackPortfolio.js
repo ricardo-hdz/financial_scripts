@@ -3,12 +3,12 @@
 */
 
 // CONST
-var TOTAL_ROW = 87;
-var DIFF_ROW = 88;
-var PCT_ROW = 89;
-var PORTFOLIOS_ROWS = [2,8,16,22,28,34,40,47,54,60,65,69,73,78,81,84];
-var VARIATION_ROWS = [88];
-var TOTAL_ROWS = [87];
+var TOTAL_ROW = 114;
+var DIFF_ROW = 115;
+var PCT_ROW = 116;
+var PORTFOLIOS_ROWS = [2,8,16,24,30,36,42,48,54,61,68,76,81,85,89,94,97,101,106,109,112];
+var VARIATION_ROWS = [115];
+var TOTAL_ROWS = [114];
 
 function onOpen() {
   var menuEntries = [
@@ -41,8 +41,8 @@ function trackPortfolio() {
     lastColumn = historicalPortfolioSheet.getLastColumn() + 1;
 
     // copy positions
-    var allocationRange = portfolioSheet.getRange('B2:B');
-    allocationRange.copyValuesToRange(historicalPortfolioSheet, lastColumn, lastColumn, 2, 2 + allocationRange.getHeight());
+    var totalRange = portfolioSheet.getRange('B2:B110');
+    totalRange.copyValuesToRange(historicalPortfolioSheet, lastColumn, lastColumn, 2, 2 + totalRange.getHeight());
 
     // copy totals of positions (by portfolio)
     var historicalPortfolioSheetRange;
@@ -50,9 +50,8 @@ function trackPortfolio() {
     var diffPortfolio;
     for (var i = 0, pr; (pr = PORTFOLIOS_ROWS[i]); i++) {
         historicalPortfolioSheetRange = historicalPortfolioSheet.getRange(pr, lastColumn);
-        portfolioSheet.getRange('C' + pr).copyTo(historicalPortfolioSheetRange, {contentsOnly: true});
         sumPortfoliosFormula = sumPortfoliosFormula + historicalPortfolioSheetRange.getA1Notation() + ',';
-        diffPortfolio = historicalPortfolioSheet.getRange(pr, lastColumn).getValue() - historicalPortfolioSheet.getRange(pr, lastColumn - 1).getValue();
+        diffPortfolio = historicalPortfolioSheetRange.getValue() - historicalPortfolioSheet.getRange(pr, lastColumn - 1).getValue();
         dailyVariationPortfolio.push(diffPortfolio.toFixed(2));
     }
     sumPortfoliosFormula = sumPortfoliosFormula + ')';
@@ -77,6 +76,7 @@ function trackPortfolio() {
     var diffValue = parseFloat(diffCell.getValue()).toFixed(2);
     var pctValue = parseFloat(pctCell.getValue() * 100).toFixed(2);
 
+    console.log('Assembling email');
     var color = diffValue > 0 ? 'green' : 'red';
     var msgVariation = renderDailyPortfolioVariation();
     var message = '<h3>Total Portfolio as of ' + getToday() + '</h3>' +
@@ -109,13 +109,16 @@ function trackPortfolio() {
         '<meta itemprop="description" content="Track daily portfolio"/>' +
         '</div>';
 
+    
     MailApp.sendEmail(owner.getEmail(), 'Portfolio Update - ' + getToday(), message, {
         name: 'Market Intelligence Bot',
         htmlBody: message + microdata
     });
 
+    console.log('Updating chart');
     // update historical charts with latest data
     updateHistoricalCharts(lastColumn);
+    console.log('Finished script');
 }
 
 function renderDailyPortfolioVariation() {
