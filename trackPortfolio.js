@@ -9,6 +9,7 @@ var PCT_ROW = 116;
 var PORTFOLIOS_ROWS = [2,8,16,24,30,36,42,48,54,61,68,76,81,85,89,94,97,101,106,109,112];
 var VARIATION_ROWS = [115];
 var TOTAL_ROWS = [114];
+var TOTAL_COPY_RANGE = 'B2:B113';
 
 function onOpen() {
   var menuEntries = [
@@ -41,7 +42,7 @@ function trackPortfolio() {
     lastColumn = historicalPortfolioSheet.getLastColumn() + 1;
 
     // copy positions
-    var totalRange = portfolioSheet.getRange('B2:B110');
+    var totalRange = portfolioSheet.getRange(TOTAL_COPY_RANGE);
     totalRange.copyValuesToRange(historicalPortfolioSheet, lastColumn, lastColumn, 2, 2 + totalRange.getHeight());
 
     // copy totals of positions (by portfolio)
