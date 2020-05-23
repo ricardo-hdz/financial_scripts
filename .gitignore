@@ -65,3 +65,5 @@ config.js
 
 .DS_STore
 */.DS_Store
+codealike.json
+package-lock.json

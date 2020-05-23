@@ -4,7 +4,7 @@
   "description": "Google Scripts to track financial assets and portfolios in Google Spreadsheets",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "mocha": "^5.2.0",
     "request-promise": "^4.2.2",
     "require-text": "0.0.1"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
   }
 }

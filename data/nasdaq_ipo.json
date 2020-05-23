@@ -1,0 +1,363 @@
+{
+    "data": {
+        "priced": {
+            "headers": {
+                "proposedTickerSymbol": "Symbol",
+                "companyName": "Company Name",
+                "proposedExchange": "Exchange/ Market",
+                "proposedSharePrice": "Price",
+                "sharesOffered": "Shares",
+                "pricedDate": "Date",
+                "dollarValueOfSharesOffered": "Offer Amount",
+                "dealStatus": "Actions"
+            },
+            "rows": [
+                {
+                    "dealID": "1110384-91734",
+                    "proposedTickerSymbol": "SLQT",
+                    "companyName": "SelectQuote, Inc.",
+                    "proposedExchange": "NYSE",
+                    "proposedSharePrice": "20.00",
+                    "sharesOffered": "28,500,000",
+                    "pricedDate": "05/21/2020",
+                    "dollarValueOfSharesOffered": "$570,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1115560-92218",
+                    "proposedTickerSymbol": "BMRGU",
+                    "companyName": "B. Riley Principal Merger Corp. II",
+                    "proposedExchange": "NYSE",
+                    "proposedSharePrice": "10.00",
+                    "sharesOffered": "17,500,000",
+                    "pricedDate": "05/20/2020",
+                    "dollarValueOfSharesOffered": "$175,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1095306-92232",
+                    "proposedTickerSymbol": "ADCT",
+                    "companyName": "ADC Therapeutics SA",
+                    "proposedExchange": "NYSE",
+                    "proposedSharePrice": "19.00",
+                    "sharesOffered": "12,245,631",
+                    "pricedDate": "05/15/2020",
+                    "dollarValueOfSharesOffered": "$232,666,989",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1116110-92249",
+                    "proposedTickerSymbol": "NOVSU",
+                    "companyName": "Novus Capital Corp",
+                    "proposedExchange": "NASDAQ Capital",
+                    "proposedSharePrice": "10.00",
+                    "sharesOffered": "10,000,000",
+                    "pricedDate": "05/15/2020",
+                    "dollarValueOfSharesOffered": "$100,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1110621-91763",
+                    "proposedTickerSymbol": "GIK'U",
+                    "companyName": "GigCapital3, Inc.",
+                    "proposedExchange": "NYSE",
+                    "proposedSharePrice": "10.00",
+                    "sharesOffered": "20,000,000",
+                    "pricedDate": "05/14/2020",
+                    "dollarValueOfSharesOffered": "$200,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1116085-92247",
+                    "proposedTickerSymbol": "JWS'U",
+                    "companyName": "Jaws Acquisition Corp.",
+                    "proposedExchange": "NYSE",
+                    "proposedSharePrice": "10.00",
+                    "sharesOffered": "60,000,000",
+                    "pricedDate": "05/14/2020",
+                    "dollarValueOfSharesOffered": "$600,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1115099-92173",
+                    "proposedTickerSymbol": "KC",
+                    "companyName": "Kingsoft Cloud Holdings Ltd",
+                    "proposedExchange": "NASDAQ Global Select",
+                    "proposedSharePrice": "17.00",
+                    "sharesOffered": "30,000,000",
+                    "pricedDate": "05/08/2020",
+                    "dollarValueOfSharesOffered": "$510,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1111669-91871",
+                    "proposedTickerSymbol": "AYLA",
+                    "companyName": "Ayala Pharmaceuticals, Inc.",
+                    "proposedExchange": "NASDAQ Global",
+                    "proposedSharePrice": "15.00",
+                    "sharesOffered": "3,666,667",
+                    "pricedDate": "05/08/2020",
+                    "dollarValueOfSharesOffered": "$55,000,005",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1092673-90273",
+                    "proposedTickerSymbol": "CLEU",
+                    "companyName": "China Liberal Education Holdings Ltd",
+                    "proposedExchange": "NASDAQ Capital",
+                    "proposedSharePrice": "6.00",
+                    "sharesOffered": "1,333,333",
+                    "pricedDate": "05/08/2020",
+                    "dollarValueOfSharesOffered": "$7,999,998",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1112687-91961",
+                    "proposedTickerSymbol": "SOACU",
+                    "companyName": "Sustainable Opportunities Acquisition Corp.",
+                    "proposedExchange": "NYSE",
+                    "proposedSharePrice": "10.00",
+                    "sharesOffered": "30,000,000",
+                    "pricedDate": "05/06/2020",
+                    "dollarValueOfSharesOffered": "$300,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1111087-91827",
+                    "proposedTickerSymbol": "LOAKU",
+                    "companyName": "Live Oak Acquisition Corp",
+                    "proposedExchange": "NYSE",
+                    "proposedSharePrice": "10.00",
+                    "sharesOffered": "20,000,000",
+                    "pricedDate": "05/06/2020",
+                    "dollarValueOfSharesOffered": "$200,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1113320-92004",
+                    "proposedTickerSymbol": "GAN",
+                    "companyName": "GAN Ltd",
+                    "proposedExchange": "NASDAQ Capital",
+                    "proposedSharePrice": "8.50",
+                    "sharesOffered": "6,380,000",
+                    "pricedDate": "05/05/2020",
+                    "dollarValueOfSharesOffered": "$54,230,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1111211-91844",
+                    "proposedTickerSymbol": "ROCHU",
+                    "companyName": "Roth CH Acquisition I Co",
+                    "proposedExchange": "NASDAQ Capital",
+                    "proposedSharePrice": "10.00",
+                    "sharesOffered": "7,500,000",
+                    "pricedDate": "05/05/2020",
+                    "dollarValueOfSharesOffered": "$75,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "674195-91878",
+                    "proposedTickerSymbol": "LYRA",
+                    "companyName": "Lyra Therapeutics, Inc.",
+                    "proposedExchange": "NASDAQ Global",
+                    "proposedSharePrice": "16.00",
+                    "sharesOffered": "3,500,000",
+                    "pricedDate": "05/01/2020",
+                    "dollarValueOfSharesOffered": "$56,000,000",
+                    "dealStatus": "Priced"
+                },
+                {
+                    "dealID": "1111059-91826",
+                    "proposedTickerSymbol": "CGROU",
+                    "companyName": "Collective Growth Corp",
+                    "proposedExchange": "NASDAQ Capital",
+                    "proposedSharePrice": "10.00",
+                    "sharesOffered": "15,000,000",
+                    "pricedDate": "05/01/2020",
+                    "dollarValueOfSharesOffered": "$150,000,000",
+                    "dealStatus": "Priced"
+                }
+            ]
+        },
+        "upcoming": {
+            "upcomingTable": {
+                "headers": {
+                    "proposedTickerSymbol": "Symbol",
+                    "companyName": "Company",
+                    "proposedExchange": "Exchange/ Market",
+                    "proposedSharePrice": "Price",
+                    "sharesOffered": "Shares",
+                    "expectedPriceDate": "Expected IPO Date",
+                    "dollarValueOfSharesOffered": "Offer Amount"
+                },
+                "rows": [
+                    {
+                        "dealID": "864405-91738",
+                        "proposedTickerSymbol": "NARI",
+                        "companyName": "Inari Medical, Inc.",
+                        "proposedExchange": "NASDAQ Global Select",
+                        "proposedSharePrice": "17.00-18.00",
+                        "sharesOffered": "7,333,000",
+                        "expectedPriceDate": "05/22/2020",
+                        "dollarValueOfSharesOffered": "$151,793,100.00"
+                    }
+                ]
+            },
+            "lastUpdatedTime": "LAST UPDATED: 05/21/2020* - Source: EDGAR® Online"
+        },
+        "filed": {
+            "headers": {
+                "proposedTickerSymbol": "Symbol",
+                "companyName": "Company Name",
+                "filedDate": "Date Filed",
+                "dollarValueOfSharesOffered": "Offer Amount"
+            },
+            "rows": [
+                {
+                    "dealID": "1117699-92488",
+                    "proposedTickerSymbol": "ARYBU",
+                    "companyName": "ARYA Sciences Acquisition Corp II",
+                    "filedDate": "05/19/2020",
+                    "dollarValueOfSharesOffered": "$143,750,000"
+                },
+                {
+                    "dealID": "910204-92485",
+                    "proposedTickerSymbol": "VRM",
+                    "companyName": "Vroom, Inc.",
+                    "filedDate": "05/18/2020",
+                    "dollarValueOfSharesOffered": "$100,000,000.00"
+                },
+                {
+                    "dealID": "1117657-92476",
+                    "proposedTickerSymbol": "AMTI",
+                    "companyName": "Applied Molecular Transport Inc.",
+                    "filedDate": "05/18/2020",
+                    "dollarValueOfSharesOffered": "$100,000,000.00"
+                },
+                {
+                    "dealID": "1117568-92464",
+                    "proposedTickerSymbol": "MCACU",
+                    "companyName": "Mountain Crest Acquisition Corp.",
+                    "filedDate": "05/15/2020",
+                    "dollarValueOfSharesOffered": "$57,500,000.00"
+                },
+                {
+                    "dealID": "1117559-92459",
+                    "proposedTickerSymbol": "FOUR",
+                    "companyName": "Shift4 Payments, Inc.",
+                    "filedDate": "05/15/2020",
+                    "dollarValueOfSharesOffered": "$100,000,000.00"
+                },
+                {
+                    "dealID": "1117306-92434",
+                    "proposedTickerSymbol": "CALT",
+                    "companyName": "Calliditas Therapeutics AB",
+                    "filedDate": "05/14/2020",
+                    "dollarValueOfSharesOffered": "$75,000,000.00"
+                },
+                {
+                    "dealID": "1114251-92426",
+                    "proposedTickerSymbol": "LEGN",
+                    "companyName": "Legend Biotech Corp",
+                    "filedDate": "05/13/2020",
+                    "dollarValueOfSharesOffered": "$100,000,000.00"
+                },
+                {
+                    "dealID": "1117138-92405",
+                    "proposedTickerSymbol": "DADA",
+                    "companyName": "Dada Nexus Ltd",
+                    "filedDate": "05/12/2020",
+                    "dollarValueOfSharesOffered": "$100,000,000"
+                },
+                {
+                    "dealID": "11720-92394",
+                    "proposedTickerSymbol": "CORO",
+                    "companyName": "Coro Global Inc.",
+                    "filedDate": "05/12/2020",
+                    "dollarValueOfSharesOffered": "$11,500,000.00"
+                },
+                {
+                    "dealID": "1116936-92383",
+                    "proposedTickerSymbol": "KRBP",
+                    "companyName": "Kiromic Biopharma, Inc.",
+                    "filedDate": "05/11/2020",
+                    "dollarValueOfSharesOffered": "$20,000,000"
+                },
+                {
+                    "dealID": "1059589-92376",
+                    "proposedTickerSymbol": "PLRX",
+                    "companyName": "PLIANT THERAPEUTICS, INC.",
+                    "filedDate": "05/11/2020",
+                    "dollarValueOfSharesOffered": "$86,250,000"
+                },
+                {
+                    "dealID": "1116900-92368",
+                    "proposedTickerSymbol": "WPF'U",
+                    "companyName": "Foley Trasimene Acquisition Corp.",
+                    "filedDate": "05/08/2020",
+                    "dollarValueOfSharesOffered": "$862,500,000.00"
+                },
+                {
+                    "dealID": "1116834-92348",
+                    "proposedTickerSymbol": "WEIX",
+                    "companyName": "Dynamic Shares Trust",
+                    "filedDate": "05/08/2020",
+                    "dollarValueOfSharesOffered": "$100,000,000.00"
+                },
+                {
+                    "dealID": "1116506-92297",
+                    "proposedTickerSymbol": "UCL",
+                    "companyName": "uCloudlink Group Inc.",
+                    "filedDate": "05/04/2020",
+                    "dollarValueOfSharesOffered": "$50,000,000.00"
+                },
+                {
+                    "dealID": "1116416-92288",
+                    "proposedTickerSymbol": null,
+                    "companyName": "EQUITABLE MINERAL & DEVELOPMENT, INC.",
+                    "filedDate": "05/01/2020",
+                    "dollarValueOfSharesOffered": "$15,000,000.00"
+                },
+                {
+                    "dealID": "1116407-92282",
+                    "proposedTickerSymbol": "LGVWU",
+                    "companyName": "Longview Acquisition Corp.",
+                    "filedDate": "05/01/2020",
+                    "dollarValueOfSharesOffered": "$345,000,000.00"
+                }
+            ]
+        },
+        "withdrawn": {
+            "headers": {
+                "proposedTickerSymbol": "Symbol",
+                "companyName": "Company Name",
+                "proposedExchange": "Exchange/ Market",
+                "sharesOffered": "Shares",
+                "filedDate": "Date Filed",
+                "dollarValueOfSharesOffered": "Offer Amount",
+                "withdrawDate": "Date Withdrawn"
+            },
+            "rows": [
+                {
+                    "dealID": "183835-91805",
+                    "proposedTickerSymbol": null,
+                    "companyName": "Pulmonx Corp",
+                    "proposedExchange": null,
+                    "sharesOffered": "",
+                    "filedDate": "02/28/2020",
+                    "dollarValueOfSharesOffered": "$86,250,000.00",
+                    "withdrawDate": "05/08/2020"
+                }
+            ]
+        },
+        "month": 5,
+        "year": 2020,
+        "totalResults": 1
+    },
+    "message": null,
+    "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+    }
+}

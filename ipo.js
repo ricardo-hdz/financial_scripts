@@ -7,24 +7,31 @@
  * @returns {JSON}
  */
 function getIPOData() {
-    var response = UrlFetchApp.fetch(IPO_ENDPOINT);
+    var response = UrlFetchApp.fetch(IPO_ENDPOINT, IPO_ENDPOINT_OPTIONS);
     return JSON.parse(response.getContentText());
 }
 
 /**
  * Process IPOS to group them by week/date
- * @param {JSON} data
+ * @param {JSON} payload
  * @returns {Object}
  */
-function processIPOCalendar(data) {
+function processIPOCalendar(payload) {
     var ipos = {};
-    if (data.hasOwnProperty('viewData') && data.viewData) {
-        for (var i = 0, ipo; (ipo = data.viewData[i]); i++) {
-            if (ipo && ipo.hasOwnProperty('Expected') && ipo.Expected) {
-                if (!ipos.hasOwnProperty(ipo.Expected)) {
-                    ipos[ipo.Expected] = [];
+    if (
+        payload &&
+        payload.data &&
+        payload.data.upcoming &&
+        payload.data.upcoming.upcomingTable &&
+        payload.data.upcoming.upcomingTable.rows
+    ) {
+        let data = payload.data.upcoming.upcomingTable.rows;
+        for (var i = 0, ipo; (ipo = data[i]); i++) {
+            if (ipo && ipo.expectedPriceDate) {
+                if (!ipos.hasOwnProperty(ipo.expectedPriceDate)) {
+                    ipos[ipo.expectedPriceDate] = [];
                 }
-                ipos[ipo.Expected].push(ipo);
+                ipos[ipo.expectedPriceDate].push(ipo);
             }
         }
     }
@@ -33,24 +40,37 @@ function processIPOCalendar(data) {
 
 /***
  * Sets the IPO data in sheet
- * @param {JSON} data
+ * @param {JSON} data Raw payload from service
  */
-function setIPOInfoInSheet(data) {
+function setIPOInfoInSheet(payload) {
     // tick, company name, date, priceLow, priceHigh, URL, description
     // A, B, C, D, E, F
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var ipoSheet = spreadsheet.getSheetByName('IPOs');
     ipoSheet.getRange('A2:G50').clearContent();
-    if (data.rawData && data.rawData.length) {
-        for (var i = 0, ipo;(ipo = data.rawData[i]); i++) {
+    if (
+        payload &&
+        payload.data &&
+        payload.data.upcoming &&
+        payload.data.upcoming.upcomingTable &&
+        payload.data.upcoming.upcomingTable.rows
+    ) {
+        let data = payload.data.upcoming.upcomingTable.rows;
+        for (var i = 0, ipo;(ipo = data[i]); i++) {
             var row = i + 2;
-            ipoSheet.getRange('A' + row).setValue(ipo.symbol);
+            ipoSheet.getRange('A' + row).setValue(ipo.proposedTickerSymbol);
             ipoSheet.getRange('B' + row).setValue(ipo.companyName);
-            ipoSheet.getRange('C' + row).setValue(ipo.expectedDate);
-            ipoSheet.getRange('D' + row).setValue(ipo.priceLow);
-            ipoSheet.getRange('E' + row).setValue(ipo.priceHigh);
-            ipoSheet.getRange('F' + row).setValue(ipo.url);
-            ipoSheet.getRange('G' + row).setValue(ipo.companyDescription);
+            ipoSheet.getRange('C' + row).setValue(ipo.expectedPriceDate);
+            let prices = ipo.proposedSharePrice ? ipo.proposedSharePrice.split('-') : [];
+            if (prices.length >= 2) {
+                ipoSheet.getRange('D' + row).setValue(prices[0]);
+                ipoSheet.getRange('E' + row).setValue(prices[1]);
+            } else {
+                ipoSheet.getRange('D' + row).setValue('NA');
+                ipoSheet.getRange('E' + row).setValue('NA');
+            }
+            ipoSheet.getRange('F' + row).setValue(`${IPO_LINK + ipo.dealID}`);
+            ipoSheet.getRange('G' + row).setValue('');
         }
     }
 }
@@ -69,13 +89,6 @@ var getIPOCalendarMessage = function(data) {
  * Sends an email with the IPO calendar data
  */
 function sendIPOReport() {
-    var d = new Date();
-
-    // Send briefing only on saturdays
-    if (d.getDay() === 6) {
-         return;
-    }
-
     var data = getIPOData();
     setIPOInfoInSheet(data);
     var msg = getIPOCalendarMessage(data);
@@ -115,10 +128,10 @@ function renderIPOCalendar(ipos) {
                 message = message + (i % 2 === 0 ? '<tr style="background-color: lightgrey;">' : '<tr>');
                 message = message +
                     '<td>' +
-                        '<b>' + ipo.Expected + '</b>' +
+                        '<b>' + ipo.expectedPriceDate + '</b>' +
                     '</td>' +
-                    '<td style="padding-left: 0px;">' + ipo.Company + '</td>' +
-                    '<td style="padding-left: 0px;">' + ipo.Symbol + '</td>' +
+                    '<td style="padding-left: 0px;">' + ipo.companyName + '</td>' +
+                    '<td style="padding-left: 0px;">' + ipo.proposedTickerSymbol + '</td>' +
                 '</tr>';
             }
         };
@@ -150,3 +163,22 @@ function getToday() {
 
     return mm + '/' + dd + '/' + yyyy;
 }
+
+function getMonthYear() {
+    var today = new Date();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    return yyyy + '-' + mm;
+}
+
+module.exports = {
+    getIPOData: getIPOData,
+    processIPOCalendar: processIPOCalendar,
+    getToday: getToday,
+    getMonthYear: getMonthYear
+};

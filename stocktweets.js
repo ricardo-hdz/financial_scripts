@@ -6,12 +6,23 @@ var portfolioTicks = [];
 function getEarningsCalendar(start, end) {
     var url = EARNINGS_ENDPOINT.replace('{start}', start);
     var options = {
+        contentType: 'application/json',
+        method: 'get',
+        muteHttpExceptions: true,
         headers: {
-            origin: STOCKTWEETS_ORIGIN
+            origin: STOCKTWEETS_ORIGIN,
+            authority:'api.stocktwits.com',
+            pragma:'no-cache',
+            'cache-control':'no-cache',
+            'accept':'application/json',
+            'authorization':'OAuth 6ad584498715ec9ee6f046a1d9d69686ee16bf2a',
+            'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4151.0 Safari/537.36',
+            referer:'https://stocktwits.com/discover/earnings-calendar'
         }
     };
     url = url.replace('{end}', end);
     var response = UrlFetchApp.fetch(url, options);
+    Logger.log(response.getContentText()); 
     return JSON.parse(response.getContentText());
 }
 
