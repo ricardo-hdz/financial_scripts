@@ -10,6 +10,8 @@ var PORTFOLIOS_ROWS = [2,8,16,24,30,36,42,48,54,61,68,76,81,85,89,94,97,101,106,
 var VARIATION_ROWS = [115];
 var TOTAL_ROWS = [114];
 var TOTAL_COPY_RANGE = 'B2:B113';
+const COLUMN_MAX_PCT_DIFF = 2;
+const COLUMN_MAX = 'C';
 
 function onOpen() {
   var menuEntries = [
@@ -49,11 +51,16 @@ function trackPortfolio() {
     var historicalPortfolioSheetRange;
     var sumPortfoliosFormula = '=SUM(';
     var diffPortfolio;
+    let maxDiffPctCell;
+    let maxCell;
     for (var i = 0, pr; (pr = PORTFOLIOS_ROWS[i]); i++) {
         historicalPortfolioSheetRange = historicalPortfolioSheet.getRange(pr, lastColumn);
         sumPortfoliosFormula = sumPortfoliosFormula + historicalPortfolioSheetRange.getA1Notation() + ',';
         diffPortfolio = historicalPortfolioSheetRange.getValue() - historicalPortfolioSheet.getRange(pr, lastColumn - 1).getValue();
         dailyVariationPortfolio.push(diffPortfolio.toFixed(2));
+        maxCell = historicalPortfolioSheet.getRange(COLUMN_MAX + pr).getA1Notation();
+        maxDiffPctCell = historicalPortfolioSheet.getRange(pr, COLUMN_MAX_PCT_DIFF);
+        maxDiffPctCell.setValue('=(' + historicalPortfolioSheetRange.getA1Notation() + '-' +  maxCell + ')/' + maxCell);
     }
     sumPortfoliosFormula = sumPortfoliosFormula + ')';
 

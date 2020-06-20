@@ -3,27 +3,58 @@
 //var EARNINGS_ENDPOINT = 'Your own endpoint';
 var portfolioTicks = [];
 
+function onOpen() {
+    let sheet = SpreadsheetApp.getActiveSpreadsheet();
+    let menuEntries = [
+       {name: "Send Earnings Report", functionName: "sendDailyEarningsReport"}
+     ];
+     sheet.addMenu("Earnings", menuEntries);
+}
+
 function getEarningsCalendar(start, end) {
-    var url = EARNINGS_ENDPOINT.replace('{start}', start);
-    var options = {
-        contentType: 'application/json',
-        method: 'get',
-        muteHttpExceptions: true,
-        headers: {
-            origin: STOCKTWEETS_ORIGIN,
-            authority:'api.stocktwits.com',
-            pragma:'no-cache',
-            'cache-control':'no-cache',
-            'accept':'application/json',
-            'authorization':'OAuth 6ad584498715ec9ee6f046a1d9d69686ee16bf2a',
-            'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4151.0 Safari/537.36',
-            referer:'https://stocktwits.com/discover/earnings-calendar'
-        }
-    };
-    url = url.replace('{end}', end);
-    var response = UrlFetchApp.fetch(url, options);
-    Logger.log(response.getContentText()); 
-    return JSON.parse(response.getContentText());
+//    var url = EARNINGS_ENDPOINT.replace('{start}', start);
+//    var options = {
+//        contentType: 'application/json',
+//        method: 'get',
+//        muteHttpExceptions: true,
+//        headers: {
+//            origin: STOCKTWEETS_ORIGIN,
+//            authority:'api.stocktwits.com',
+//            pragma:'no-cache',
+//            'cache-control':'no-cache',
+//            'accept':'application/json',
+//            'authorization':'OAuth 6ad584498715ec9ee6f046a1d9d69686ee16bf2a',
+//            'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4151.0 Safari/537.36',
+//            referer:'https://stocktwits.com/discover/earnings-calendar',
+//            'sec-ch-ua': '"\\Not;A\"Brand";v="99", "Google Chrome";v="85", "Chromium";v="85"',
+//            'sec-ch-ua-mobile': '?0',
+//            'sec-fetch-dest': 'empty',
+//            'sec-fetch-mode': 'cors',
+//            'sec-fetch-site': 'same-site'
+//        }
+//    };
+//    url = url.replace('{end}', end);
+//    var response = UrlFetchApp.fetch(url, options);
+//    Logger.log(response.getContentText()); 
+//    return JSON.parse(response.getContentText());
+    let payload = getEarningsFromInput();
+    return payload ? payload : data;
+}
+
+function getEarningsFromInput() {
+    let payload = '';
+
+    var ui = SpreadsheetApp.getUi();
+    var response = ui.prompt('Earnings Input', 'Please add earnings JSON payload', ui.ButtonSet.OK_CANCEL);
+
+    if (response.getSelectedButton() == ui.Button.OK) {
+        payload = response.getResponseText();
+    } else if (response.getSelectedButton() == ui.Button.CANCEL) {
+        Logger.log('The user canceled the dialog.');
+    } else {
+        Logger.log('The user closed the dialog.');
+    }
+    return payload;
 }
 
 function getDates(startDate, numberDays) {
@@ -127,7 +158,7 @@ var getEarningsCalendarMessage = function(earnings, dates) {
     return renderEarningsCalendar(cal, dates);
 }
 
-function sendDailyTrendingReport() {
+function sendDailyEarningsReport() {
     var d = new Date();
 
     // Send briefing only on market days
@@ -142,11 +173,11 @@ function sendDailyTrendingReport() {
 
     var message = getEarningsCalendarMessage(earnings, dates);
 
-    var trendingData = getTrendingTicks();
-    ticks = processTrendingTicks(trendingData);
-    setTrendingTicksInSheet(ticks);
-
-    message = message + renderTrendingTicks(ticks);
+//    var trendingData = getTrendingTicks();
+//    ticks = processTrendingTicks(trendingData);
+//    setTrendingTicksInSheet(ticks);
+//
+//    message = message + renderTrendingTicks(ticks);
 
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var url = spreadsheet.getUrl();
