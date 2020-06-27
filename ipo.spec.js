@@ -31,6 +31,14 @@ describe('IPO', function() {
     });
 
     it('should get month and year for API call', () => {
-        expect(ipo.getMonthYear()).toEqual('2020-05');
+        expect(ipo.getMonthYear()).toEqual('2020-06');
+    });
+
+    it('should get next weeks month and year for API call', () => {
+        expect(ipo.getMonthYear(7)).toEqual('2020-07');
+    });
+
+    it('should get next weeks array', () => {
+        expect(ipo.getNextWeeks()).toEqual(['2020-06', '2020-07']);
     });
 });

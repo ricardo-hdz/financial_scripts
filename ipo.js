@@ -6,35 +6,28 @@
  * Gets the IPO data from endpoint
  * @returns {JSON}
  */
-function getIPOData() {
-    var response = UrlFetchApp.fetch(IPO_ENDPOINT, IPO_ENDPOINT_OPTIONS);
+function getIPOData(week = '') {
+    var response = UrlFetchApp.fetch(IPO_ENDPOINT + week, IPO_ENDPOINT_OPTIONS);
     return JSON.parse(response.getContentText());
 }
 
 /**
  * Process IPOS to group them by week/date
- * @param {JSON} payload
+ * @param {JSON} data
  * @returns {Object}
  */
-function processIPOCalendar(payload) {
+function processIPOCalendar(data) {
     var ipos = {};
-    if (
-        payload &&
-        payload.data &&
-        payload.data.upcoming &&
-        payload.data.upcoming.upcomingTable &&
-        payload.data.upcoming.upcomingTable.rows
-    ) {
-        let data = payload.data.upcoming.upcomingTable.rows;
-        for (var i = 0, ipo; (ipo = data[i]); i++) {
-            if (ipo && ipo.expectedPriceDate) {
-                if (!ipos.hasOwnProperty(ipo.expectedPriceDate)) {
-                    ipos[ipo.expectedPriceDate] = [];
-                }
-                ipos[ipo.expectedPriceDate].push(ipo);
+    
+    for (var i = 0, ipo; (ipo = data[i]); i++) {
+        if (ipo && ipo.expectedPriceDate) {
+            if (!ipos.hasOwnProperty(ipo.expectedPriceDate)) {
+                ipos[ipo.expectedPriceDate] = [];
             }
+            ipos[ipo.expectedPriceDate].push(ipo);
         }
     }
+    
     return ipos;
 }
 
@@ -42,36 +35,28 @@ function processIPOCalendar(payload) {
  * Sets the IPO data in sheet
  * @param {JSON} data Raw payload from service
  */
-function setIPOInfoInSheet(payload) {
+function setIPOInfoInSheet(data) {
     // tick, company name, date, priceLow, priceHigh, URL, description
     // A, B, C, D, E, F
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     var ipoSheet = spreadsheet.getSheetByName('IPOs');
     ipoSheet.getRange('A2:G50').clearContent();
-    if (
-        payload &&
-        payload.data &&
-        payload.data.upcoming &&
-        payload.data.upcoming.upcomingTable &&
-        payload.data.upcoming.upcomingTable.rows
-    ) {
-        let data = payload.data.upcoming.upcomingTable.rows;
-        for (var i = 0, ipo;(ipo = data[i]); i++) {
-            var row = i + 2;
-            ipoSheet.getRange('A' + row).setValue(ipo.proposedTickerSymbol);
-            ipoSheet.getRange('B' + row).setValue(ipo.companyName);
-            ipoSheet.getRange('C' + row).setValue(ipo.expectedPriceDate);
-            let prices = ipo.proposedSharePrice ? ipo.proposedSharePrice.split('-') : [];
-            if (prices.length >= 2) {
-                ipoSheet.getRange('D' + row).setValue(prices[0]);
-                ipoSheet.getRange('E' + row).setValue(prices[1]);
-            } else {
-                ipoSheet.getRange('D' + row).setValue('NA');
-                ipoSheet.getRange('E' + row).setValue('NA');
-            }
-            ipoSheet.getRange('F' + row).setValue(`${IPO_LINK + ipo.dealID}`);
-            ipoSheet.getRange('G' + row).setValue('');
+   
+    for (var i = 0, ipo;(ipo = data[i]); i++) {
+        var row = i + 2;
+        ipoSheet.getRange('A' + row).setValue(ipo.proposedTickerSymbol);
+        ipoSheet.getRange('B' + row).setValue(ipo.companyName);
+        ipoSheet.getRange('C' + row).setValue(ipo.expectedPriceDate);
+        let prices = ipo.proposedSharePrice ? ipo.proposedSharePrice.split('-') : [];
+        if (prices.length >= 2) {
+            ipoSheet.getRange('D' + row).setValue(prices[0]);
+            ipoSheet.getRange('E' + row).setValue(prices[1]);
+        } else {
+            ipoSheet.getRange('D' + row).setValue('NA');
+            ipoSheet.getRange('E' + row).setValue('NA');
         }
+        ipoSheet.getRange('F' + row).setValue(`${IPO_LINK + ipo.dealID}`);
+        ipoSheet.getRange('G' + row).setValue('');
     }
 }
 
@@ -89,7 +74,7 @@ var getIPOCalendarMessage = function(data) {
  * Sends an email with the IPO calendar data
  */
 function sendIPOReport() {
-    var data = getIPOData();
+    let data = getDataForNextWeeks();
     setIPOInfoInSheet(data);
     var msg = getIPOCalendarMessage(data);
 
@@ -164,8 +149,41 @@ function getToday() {
     return mm + '/' + dd + '/' + yyyy;
 }
 
-function getMonthYear() {
+function getDataForNextWeeks() {
+    let weeks = getNextWeeks();
+    let payload, data = [];
+    weeks.forEach(w => {
+        payload = getIPOData(w);
+        if (
+            payload &&
+            payload.data &&
+            payload.data.upcoming &&
+            payload.data.upcoming.upcomingTable &&
+            payload.data.upcoming.upcomingTable.rows
+        ) {
+            data = [...data, ...payload.data.upcoming.upcomingTable.rows];
+        }
+    });
+    return data;
+}
+
+/**
+ * Gets an array of YYYY-MM for current and next week
+ */
+function getNextWeeks() {
+    let weeks = [];
+    let currentWeek = getMonthYear();
+    weeks.push(currentWeek);
+    let nextWeek = getMonthYear(7);
+    if (currentWeek !== nextWeek) {
+        weeks.push(nextWeek);
+    }
+    return weeks;
+}
+
+function getMonthYear(daysAhead = 0) {
     var today = new Date();
+    today.setDate(today.getDate() + daysAhead);
     var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
 
@@ -180,5 +198,7 @@ module.exports = {
     getIPOData: getIPOData,
     processIPOCalendar: processIPOCalendar,
     getToday: getToday,
-    getMonthYear: getMonthYear
+    getMonthYear: getMonthYear,
+    getNextWeeks: getNextWeeks,
+    getDataForNextWeeks: getDataForNextWeeks
 };
