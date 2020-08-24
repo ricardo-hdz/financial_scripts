@@ -366,8 +366,8 @@ function renderMovers(group, color, message) {
                 '<td>' +
                     '<b>' +
                     '<a style="color: ' + color + '; "' +
-                        ' href="https://finance.yahoo.com/quote/' + prop + '/key-statistics?p=' +
-                        prop + '">' + prop +
+                        ' href="https://www.barchart.com/stocks/quotes/' + prop +
+                        '/interactive-chart/fullscreen' + '">' + prop +
                     '</a>' +
                     '</b>' +
                 '</td>' +
